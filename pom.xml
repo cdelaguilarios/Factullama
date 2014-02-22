@@ -6,7 +6,6 @@
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>FactuLlamita</name>
-    <url>https://github.com/cdelaguilarios/Factullama</url>
 
 
     <properties>
@@ -58,8 +57,8 @@
         <!-- Java Servlet API -->
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
+            <artifactId>servlet-api</artifactId>
+            <version>${javax-servlet.version}</version>
         </dependency>
 
         <!-- Thymeleaf Template Engine (Core - Integration with Spring Framework)-->

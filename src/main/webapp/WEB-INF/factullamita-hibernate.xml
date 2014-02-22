@@ -20,6 +20,7 @@
             <list>
                 <value>com.llamita.factullamita.model.Customer</value>
                 <value>com.llamita.factullamita.model.Bill</value>
+                <value>com.llamita.factullamita.model.BillDetail</value>
             </list>
 
         </property>
