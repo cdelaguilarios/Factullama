@@ -2,6 +2,7 @@ package com.llamita.factullamita.repository;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +12,8 @@ import com.llamita.factullamita.model.Customer;
 public class CustomerRepository extends HibernateRepository{
 
 	public List<Customer> listCustomer(){
-		return null;
+		Criteria criteria = getSession().createCriteria(Customer.class);
+		return criteria.list();
 	}
 	
 	public void addCustomer(Customer customer){
