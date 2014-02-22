@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
-<<<<<<< HEAD
 		<title>Factullamita</title>
-=======
-		<title>Factullama</title>
->>>>>>> 31cd57119594c15b067f317445f1e340476a6e8c
 		<meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="../../css/bootstrap.min.css" th:href="@{/admin/css/bootstrap.min.css}"/>
@@ -33,8 +29,15 @@
 		<div id="sidebar">
 			<!--<a href="#" class="hide"><i class="glyphicon glyphicon-home"></i> Dashboard</a>-->
 			<ul>
-				<li class="active"><a href="#" th:href="@{/generateBill}"><i class="glyphicon glyphicon-home"></i><span>Generación de Factura</span></a></li>	
-				<li><a href="#" th:href="@{/editTemplate}"><i class="fa fa-users fa-lg"></i><span>Edición de plantilla</span></a></li>	
+				<li class="active"><a href="#" th:href="@{/index}"><i class="glyphicon glyphicon-home"></i><span>General</span></a></li>	
+				<li><a href="#" th:href="@{/customer}"><i class="fa fa-users fa-lg"></i> <span>Clientes</span></a></li>		
+				<li class="submenu">
+					<a href="#"><i class="fa fa-dollar fa-lg"></i> <span>Facturacion</span> <span class="label">2</span></a>
+					<ul>
+						<li><a href="#" th:href="@{/bill}">Facturas</a></li>
+						<li><a href="#" th:href="@{/configuration}">Configuraci&oacute;n</a></li>
+					</ul>
+				</li>	
 			</ul>		
 		</div>
 		

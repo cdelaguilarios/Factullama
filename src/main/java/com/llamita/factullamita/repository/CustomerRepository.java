@@ -5,10 +5,12 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.llamita.factullamita.model.Customer;
 
 @Repository
+@Transactional
 public class CustomerRepository extends HibernateRepository{
 
 	public List<Customer> listCustomer(){
@@ -16,7 +18,7 @@ public class CustomerRepository extends HibernateRepository{
 		return criteria.list();
 	}
 	
-	public void addCustomer(Customer customer){
+	public void addOrUpdateCustomer(Customer customer){
 		Transaction tx = null;
 		try{
 			tx = (Transaction) getSession().beginTransaction();
