@@ -22,6 +22,8 @@ public class CustomerRepository extends HibernateRepository{
 		Transaction tx = null;
 		try{
 			tx = (Transaction) getSession().beginTransaction();
+			//Agregar estado por defecto
+			customer.setState("1");
 			getSession().saveOrUpdate(customer);
 			tx.commit();
 		}catch(Exception e){
@@ -31,6 +33,10 @@ public class CustomerRepository extends HibernateRepository{
     			System.out.println("Couldn’t roll back transaction "+ rbe);
     		}
 		}
+	}
+	
+	public Customer getCustomer(Integer idCustomer){
+		return (Customer) getSession().get(Customer.class, idCustomer);
 	}
 	
 }

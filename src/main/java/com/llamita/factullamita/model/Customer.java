@@ -1,5 +1,7 @@
 package com.llamita.factullamita.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,8 +10,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="CLIENTE")
-public class Customer {
+public class Customer  implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -463762234326019616L;
+
 	@Id
 	@GeneratedValue
 	@Column(name="IN_IDCLIENTE")
