@@ -17,21 +17,21 @@ public class Bill implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6341632262507137398L;
+	private static long serialVersionUID = 6341632262507137398L;
 
 	@Id
 	@GeneratedValue
 	@Column(name = "IN_IDFACTURA")
-	private int id;
+	private Integer id;
 	
 	@Column(name = "VC_NUMERO")
 	private String number;
 	
 	@Column(name = "DT_FECHA_EMISION")
-	private Date issue;
+	private Date issueDate;
 	
 	@Column(name = "VC_GUIA_REMISION")
-	private String wallbill;
+	private String referralGuide;
 	
 	@Column(name = "VC_CONDICIONES")
 	private String conditions;
@@ -46,7 +46,7 @@ public class Bill implements Serializable{
 	private String status;
 	
 	@Column(name = "DT_FECHA_CANCELADO")
-	private String canceled;
+	private Date canceledDate;
 	
 	@Column(name = "VC_SUBTOTAL")
 	private String subtotal;
@@ -57,17 +57,17 @@ public class Bill implements Serializable{
 	@Column(name = "VC_TOTAL")
 	private String total;
 	
-	@Column(name = "IN_IDCONFIGURACION")
-	private int idConf;
+	@Column(name = "IN_IDMONEDA")
+	private Integer idCurrency;
 	
 	@Column(name = "IN_IDCLIENTE")
-	private int idCustumer;
+	private Integer idCustomer;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -79,20 +79,20 @@ public class Bill implements Serializable{
 		this.number = number;
 	}
 
-	public Date getIssue() {
-		return issue;
+	public Date getIssueDate() {
+		return issueDate;
 	}
 
-	public void setIssue(Date issue) {
-		this.issue = issue;
+	public void setIssueDate(Date issueDate) {
+		this.issueDate = issueDate;
 	}
 
-	public String getWallbill() {
-		return wallbill;
+	public String getReferralGuide() {
+		return referralGuide;
 	}
 
-	public void setWallbill(String wallbill) {
-		this.wallbill = wallbill;
+	public void setReferralGuide(String referralGuide) {
+		this.referralGuide = referralGuide;
 	}
 
 	public String getConditions() {
@@ -127,12 +127,12 @@ public class Bill implements Serializable{
 		this.status = status;
 	}
 
-	public String getCanceled() {
-		return canceled;
+	public Date getCanceledDate() {
+		return canceledDate;
 	}
 
-	public void setCanceled(String canceled) {
-		this.canceled = canceled;
+	public void setCanceledDate(Date canceledDate) {
+		this.canceledDate = canceledDate;
 	}
 
 	public String getSubtotal() {
@@ -159,22 +159,22 @@ public class Bill implements Serializable{
 		this.total = total;
 	}
 
-	public int getIdConf() {
-		return idConf;
+	public Integer getIdCurrency() {
+		return idCurrency;
 	}
 
-	public void setIdConf(int idConf) {
-		this.idConf = idConf;
+	public void setIdCurrency(Integer idCurrency) {
+		this.idCurrency = idCurrency;
 	}
 
-	public int getIdCustumer() {
-		return idCustumer;
+	public Integer getIdCustomer() {
+		return idCustomer;
 	}
 
-	public void setIdCustumer(int idCustumer) {
-		this.idCustumer = idCustumer;
+	public void setIdCustomer(Integer idCustomer) {
+		this.idCustomer = idCustomer;
 	}
-	
+
 	
 	
 }

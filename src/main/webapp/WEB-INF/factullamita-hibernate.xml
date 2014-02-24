@@ -21,6 +21,7 @@
                 <value>com.llamita.factullamita.model.Customer</value>
                 <value>com.llamita.factullamita.model.Bill</value>
                 <value>com.llamita.factullamita.model.BillDetail</value>
+                <value>com.llamita.factullamita.model.Currency</value>
             </list>
 
         </property>

@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.llamita.factullamita.logic.ManageCurrencyLogic;
 import com.llamita.factullamita.logic.ManageCustomerLogic;
 import com.llamita.factullamita.model.Customer;
-import com.llamita.factullamita.repository.CustomerRepository;
 import com.llamita.factullamita.util.Caster;
+import com.llamita.factullamita.view.BillBean;
 import com.llamita.factullamita.view.CustomerBean;
 
 @Controller
@@ -24,6 +25,9 @@ public class CustomerController {
 	
 	@Autowired
 	private ManageCustomerLogic manageCustomerLogic;
+	
+	@Autowired
+	private ManageCurrencyLogic manageCurrencyLogic;
 	
 	@RequestMapping(value="/customer",method=RequestMethod.GET)
 	public String listCustomers(ModelMap modelMap){
@@ -67,6 +71,24 @@ public class CustomerController {
 		modelMap.clear();
 		
 		return listCustomers(modelMap);
+	}
+	
+	@RequestMapping(value="/addBill/{idCustomer}",method=RequestMethod.GET)
+	public String addBillInit(@PathVariable Integer idCustomer, ModelMap modelMap){
+		BillBean bill = new BillBean();
+		bill.setIdCustomer(idCustomer);
+		bill.setCurrencies(manageCurrencyLogic.listCurrency());
+		modelMap.addAttribute("bill", bill);
+		return "/bill/newHead";
+	}
+	
+	@RequestMapping(value="/fillBillDetail",method=RequestMethod.POST)
+	public String fillBillDetail(@Valid @ModelAttribute(value="bill") BillBean bill,final BindingResult bindingResult, ModelMap modelMap){
+		if(bindingResult.hasErrors()){
+			return "/addBill/"+bill.getIdCustomer();
+		}
+		modelMap.addAttribute("bill", bill);
+		return "/bill/newBill";
 	}
 	
 

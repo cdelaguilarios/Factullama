@@ -1,0 +1,97 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/base">
+	
+	<div layout:fragment="content">
+	
+		<div id="content-header">
+			<h1>Nueva Factura</h1>
+		</div>
+		
+		<div class="row">
+			<div class="col-12">
+				<div class="widget-box">
+					<div class="widget-title">
+						<span class="icon">
+							<i class="glyphicon glyphicon-th-list"></i>									
+						</span>
+						<h5>Factura # <span th:text="${bill.number}">00099999</span></h5>
+						<div class="buttons">
+							<a title="Icon Title" class="btn" href="#" th:href="@{|/newDetail/${bill.id}|}"><i class="glyphicon glyphicon-plus-sign"></i> <span class="text">Agregar Detalle</span></a>
+							<a title="Icon Title" class="btn" href="#"><i class="glyphicon glyphicon-print"></i> <span class="text">Imprimir</span></a>
+						</div>
+					</div>
+					<div class="widget-content nopadding">
+						<div class="invoice-content">
+							<div class="invoice-head">
+								<div class="invoice-meta">
+									Inversiones Electrocan S.A.C   /  <span class="invoice-number">RUC. 96558222331 </span>
+								</div>
+								<div class="invoice-from">
+									<ul>
+										<li>
+										<span><strong>Fecha de Emisión:</strong><span th:text="${bill.issueDate}">2012-07-15</span></span>
+										<span><strong>T.C :</strong><span th:text="${bill.exchangeRate}">2.80</span></span>
+										<span><strong>Guia de Remisión :</strong><span th:text="${bill.referralGuide}">77343-2342</span></span>
+										<span><strong>Condiciones :</strong><span th:text="${bill.conditions}">2 Meses</span></span>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div>
+								<table class="table table-bordered table-striped table-hover">
+								<thead>
+									<tr>
+										<th>Cantidad</th>
+										<th>Descripcion</th>
+										<th>P. Unitario</th>
+										<th>Importe</th>
+									</tr>
+								</thead>
+								<tfoot>
+									<tr>
+										<th class="total-label" colspan="3">
+											 Subtotal:
+										</th>
+										<th class="total-amount" th:text="${bill.subtotal}">
+											 $920.00
+										</th>
+									</tr>
+									<tr>
+										<th class="total-label" colspan="3">
+											 IGV:
+										</th>
+										<th class="total-amount" th:text="${bill.igv}">
+											 $920.00
+										</th>
+									</tr>
+									<tr>
+										<th class="total-label" colspan="3">
+											 Total:
+										</th>
+										<th class="total-amount" th:text="${bill.total}">
+											 $920.00
+										</th>
+									</tr>
+								</tfoot>
+								<tbody>
+								<tr th:each="detail : ${bill.details}">
+									<td th:text="${detail.quantity}">1</td>
+									<td th:text="${detail.description}">Vivamus sed auctor nibh congue, ligula</td>
+									<td th:text="${detail.unitPrice}">$20.00</td>
+									<td th:text="${detail.amount}">$20.00</td>
+								</tr>
+								</tbody>
+								</table>
+							</div>
+							<p class="amount-word">
+								SON: <span th:text="${bill.son}">Nine Hundred Twenty Dollars</span>
+							</p>
+						</div>
+					</div>
+				</div>			
+			</div>
+		</div>
+	
+	</div>
+</html>
