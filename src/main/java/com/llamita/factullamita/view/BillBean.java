@@ -14,6 +14,7 @@ public class BillBean implements Serializable{
 	 */
 	private static final long serialVersionUID = -5058174990114246043L;
 	
+	private int id;
 	private int idCustomer;
 	private String number;
 	private String referralGuide;
@@ -27,8 +28,14 @@ public class BillBean implements Serializable{
 	private String total;
 	
 	private List<Currency> currencies; 
-	private List<BillDetail> details;
+	private List<BillDetailBean> details;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public int getIdCustomer() {
 		return idCustomer;
 	}
@@ -83,10 +90,10 @@ public class BillBean implements Serializable{
 	public void setIssueDate(Date issueDate) {
 		this.issueDate = issueDate;
 	}
-	public List<BillDetail> getDetails() {
+	public List<BillDetailBean> getDetails() {
 		return details;
 	}
-	public void setDetails(List<BillDetail> details) {
+	public void setDetails(List<BillDetailBean> details) {
 		this.details = details;
 	}
 	public String getSubtotal() {

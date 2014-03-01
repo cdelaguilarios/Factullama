@@ -18,6 +18,7 @@ import com.llamita.factullamita.logic.ManageCustomerLogic;
 import com.llamita.factullamita.model.Customer;
 import com.llamita.factullamita.util.Caster;
 import com.llamita.factullamita.view.BillBean;
+import com.llamita.factullamita.view.BillDetailBean;
 import com.llamita.factullamita.view.CustomerBean;
 
 @Controller
@@ -81,13 +82,29 @@ public class CustomerController {
 		modelMap.addAttribute("bill", bill);
 		return "/bill/newHead";
 	}
-	
+
 	@RequestMapping(value="/fillBillDetail",method=RequestMethod.POST)
 	public String fillBillDetail(@Valid @ModelAttribute(value="bill") BillBean bill,final BindingResult bindingResult, ModelMap modelMap){
 		if(bindingResult.hasErrors()){
 			return "/addBill/"+bill.getIdCustomer();
 		}
 		modelMap.addAttribute("bill", bill);
+		return "/bill/newBill";
+	}
+	
+	@RequestMapping(value="/newDetail/{idBill}",method=RequestMethod.GET)
+	public String addDetailBillInit(@PathVariable Integer idBill, ModelMap modelMap){
+		BillDetailBean billDetail = new BillDetailBean();
+		billDetail.setIdBill(idBill);
+		modelMap.addAttribute("billDetail", billDetail);
+		return "/bill/newDetail";
+	}
+	
+	@RequestMapping(value="",method=RequestMethod.POST)
+	public String addDetailBill(@Valid @ModelAttribute(value="billDetail") BillDetailBean billDetail, final BindingResult bindingResult, ModelMap modelMap){
+		if(bindingResult.hasErrors()){
+			return "/bill/newDetail";
+		}
 		return "/bill/newBill";
 	}
 	
