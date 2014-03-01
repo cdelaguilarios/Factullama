@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import com.llamita.factullamita.model.BillDetail;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import com.llamita.factullamita.model.Currency;
 
 public class BillBean implements Serializable{
@@ -16,6 +18,9 @@ public class BillBean implements Serializable{
 	
 	private int id;
 	private int idCustomer;
+	
+	@NotNull
+	@Size(min=1,max=20)
 	private String number;
 	private String referralGuide;
 	private String conditions;
