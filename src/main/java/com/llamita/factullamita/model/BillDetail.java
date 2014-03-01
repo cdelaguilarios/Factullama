@@ -11,40 +11,37 @@ import javax.persistence.Table;
 @Entity
 @Table (name ="DETALLE_FACTURA")
 public class BillDetail implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -1925838026710587083L;
 
 	@Id
 	@GeneratedValue
-	@Column( name = "IN_IDDETALLE_FACTURA")
-	private int id;
+	@Column(name = "IN_IDDETALLE_FACTURA")
+	private Integer id;
 	
-	@Column( name = "IN_NUMERO")
+	@Column(name = "IN_NUMERO")
 	private int number;
 	
-	@Column( name = "VC_DESCRIPCION")
+	@Column(name = "VC_DESCRIPCION")
 	private String description;
 	
-	@Column( name = "IN_CANTIDAD")
+	@Column(name = "IN_CANTIDAD")
 	private int quantity;
 	
-	@Column( name = "VC_PRECIO_UNITARIO")
+	@Column(name = "VC_PRECIO_UNITARIO")
 	private int unitPrice;
 	
-	@Column( name = "VC_IMPORTE")
+	@Column(name = "VC_IMPORTE")
 	private String amount;
 	
-	@Column( name = "IN_IDFACTURA")
+	@Column(name = "IN_IDFACTURA")
 	private int idBill;
+
+    public BillDetail() {}
 
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -95,6 +92,4 @@ public class BillDetail implements Serializable{
 	public void setIdBill(int idBill) {
 		this.idBill = idBill;
 	}
-
-	
 }

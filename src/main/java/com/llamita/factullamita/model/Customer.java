@@ -11,11 +11,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="CLIENTE")
 public class Customer  implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -463762234326019616L;
 
 	@Id
 	@GeneratedValue

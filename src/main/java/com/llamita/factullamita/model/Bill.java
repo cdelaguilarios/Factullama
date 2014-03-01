@@ -13,11 +13,6 @@ import org.hibernate.annotations.Entity;
 @Entity
 @Table( name = "FACTURA")
 public class Bill implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static long serialVersionUID = 6341632262507137398L;
 
 	@Id
 	@GeneratedValue
@@ -62,6 +57,8 @@ public class Bill implements Serializable{
 	
 	@Column(name = "IN_IDCLIENTE")
 	private Integer idCustomer;
+
+    public Bill() {}
 
 	public Integer getId() {
 		return id;
