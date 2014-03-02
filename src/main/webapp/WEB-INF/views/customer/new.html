@@ -17,11 +17,11 @@
 						</span>
 						<h5>Creación de cliente</h5>
 						<div class="buttons">
-							<a title="Icon Title" class="btn" href="#" th:href="@{|/customer|}"><i class="glyphicon glyphicon-arrow-left"></i> <span class="text">Atrás</span></a>
+							<a title="Icon Title" class="btn" href="#" th:href="@{|/admin/customer|}"><i class="glyphicon glyphicon-arrow-left"></i> <span class="text">Atrás</span></a>
 						</div>
 					</div>
 					<div class="widget-content nopadding">
-						<form class="form-horizontal" method="post" action="#" th:action="@{/newCustomer}" th:object="${customer}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+						<form class="form-horizontal" method="post" action="#" th:action="@{/admin/newCustomer}" th:object="${customer}" name="basic_validate" id="basic_validate" novalidate="novalidate">
                            <div class="form-group" th:class="${#fields.hasErrors('name')}? 'form-group has-error' : 'form-group'">
                                <label class="control-label">Nombre</label>
                                <div class="controls">
@@ -37,7 +37,7 @@
                                </div>
                            </div>
                            <div class="form-group" th:class="${#fields.hasErrors('address')}? 'form-group has-error' : 'form-group'">
-                               <label class="control-label">Dirección</label>
+                               <label class="control-label">DirecciÃ³n</label>
                                <div class="controls">
                                    <input type="text" class="form-control input-small" name="address" id="address" th:field="*{address}"/><br/>
                                    <span class="help-inline" for="address" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Incorrect Direccion</span>

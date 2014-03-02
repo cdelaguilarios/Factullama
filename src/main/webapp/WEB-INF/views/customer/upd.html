@@ -17,11 +17,11 @@
 						</span>
 						<h5>Actualización de cliente</h5>
 						<div class="buttons">
-							<a title="Icon Title" class="btn" href="#" th:href="@{|/customer|}"><i class="glyphicon glyphicon-arrow-left"></i> <span class="text">Atrás</span></a>
+							<a title="Icon Title" class="btn" href="#" th:href="@{|/admin/customer|}"><i class="glyphicon glyphicon-arrow-left"></i> <span class="text">Atrás</span></a>
 						</div>
 					</div>
 					<div class="widget-content nopadding">
-						<form class="form-horizontal" method="post" action="#" th:action="@{/updCustomer}" th:object="${customer}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+						<form class="form-horizontal" method="post" action="#" th:action="@{/admin/updCustomer}" th:object="${customer}" name="basic_validate" id="basic_validate" novalidate="novalidate">
                            <input type="hidden" th:field="*{id}" />
                            <div class="form-group" th:class="${#fields.hasErrors('name')}? 'form-group has-error' : 'form-group'">
                                <label class="control-label">Nombre</label>

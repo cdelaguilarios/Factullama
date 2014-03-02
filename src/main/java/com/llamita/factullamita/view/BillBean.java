@@ -15,36 +15,33 @@ public class BillBean implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -5058174990114246043L;
+
+	private Integer id;
 	
-	private int id;
-	private int idCustomer;
-	
-	@NotNull
-	@Size(min=1,max=20)
-	private String number;
 	private String referralGuide;
 	private String conditions;
 	private String exchangeRate;
 	private String son;
 	private Date issueDate;
-	private int idCurrency;
+	private Integer idCurrency;
 	private String subtotal;
 	private String igv;
 	private String total;
 	
 	private List<Currency> currencies; 
 	private List<BillDetailBean> details;
+
+	@NotNull
+	private Integer idCustomer;
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public int getIdCustomer() {
+	@NotNull
+	@Size(min=1,max=20)
+	private String number;
+
+	public Integer getIdCustomer() {
 		return idCustomer;
 	}
-	public void setIdCustomer(int idCustomer) {
+	public void setIdCustomer(Integer idCustomer) {
 		this.idCustomer = idCustomer;
 	}
 	public String getNumber() {
@@ -77,10 +74,10 @@ public class BillBean implements Serializable{
 	public void setSon(String son) {
 		this.son = son;
 	}
-	public int getIdCurrency() {
+	public Integer getIdCurrency() {
 		return idCurrency;
 	}
-	public void setIdCurrency(int idCurrency) {
+	public void setIdCurrency(Integer idCurrency) {
 		this.idCurrency = idCurrency;
 	}
 	public List<Currency> getCurrencies() {
@@ -119,8 +116,11 @@ public class BillBean implements Serializable{
 	public void setTotal(String total) {
 		this.total = total;
 	}
-	
-	
-	
-	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 }

@@ -22,6 +22,7 @@ import com.llamita.factullamita.view.BillDetailBean;
 import com.llamita.factullamita.view.CustomerBean;
 
 @Controller
+@RequestMapping(value="/admin")
 public class CustomerController {
 	
 	@Autowired
@@ -86,6 +87,7 @@ public class CustomerController {
 	@RequestMapping(value="/fillBillDetail",method=RequestMethod.POST)
 	public String fillBillDetail(@Valid @ModelAttribute(value="bill") BillBean bill,final BindingResult bindingResult, ModelMap modelMap){
 		if(bindingResult.hasErrors()){
+			System.out.println("Error: "+bindingResult.getErrorCount());
 			return "/addBill/"+bill.getIdCustomer();
 		}
 		modelMap.addAttribute("bill", bill);
