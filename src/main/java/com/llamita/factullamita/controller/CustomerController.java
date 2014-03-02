@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.llamita.factullamita.logic.ManageBillDetailLogic;
+import com.llamita.factullamita.logic.ManageBillLogic;
 import com.llamita.factullamita.logic.ManageCurrencyLogic;
 import com.llamita.factullamita.logic.ManageCustomerLogic;
 import com.llamita.factullamita.model.Currency;
@@ -28,6 +30,20 @@ public class CustomerController {
 	
 	@Autowired
 	private ManageCustomerLogic manageCustomerLogic;
+
+	@Autowired
+	private ManageCurrencyLogic manageCurrencyLogic;
+	
+	@Autowired
+	private ManageBillLogic manageBillLogic;
+	
+	@Autowired
+	private ManageBillDetailLogic manageBillDetailLogic;
+	
+	@ModelAttribute("allCurrencies")
+	public List<Currency> listCurrencies(){
+		return manageCurrencyLogic.listCurrency();
+	}
 
 	@RequestMapping(value="/customer",method=RequestMethod.GET)
 	public String listCustomers(ModelMap modelMap){
@@ -86,6 +102,8 @@ public class CustomerController {
 		if(bindingResult.hasErrors()){
 			return "/bill/newHead";
 		}
+
+		bill.setCustomer(Caster.customerModelToBean(manageCustomerLogic.getCustomer(bill.getIdCustomer())));
 		modelMap.addAttribute("bill", bill);
 		return "/bill/newBill";
 	}
@@ -98,13 +116,13 @@ public class CustomerController {
 		return "/bill/newDetail";
 	}
 	
-//	@RequestMapping(value="",method=RequestMethod.POST)
-//	public String addDetailBill(@Valid @ModelAttribute(value="billDetail") BillDetailBean billDetail, final BindingResult bindingResult, ModelMap modelMap){
-//		if(bindingResult.hasErrors()){
-//			return "/bill/newDetail";
-//		}
-//		return "/bill/newBill";
-//	}
+	@RequestMapping(value="/addDetail",method=RequestMethod.POST)
+	public String addDetailBill(@Valid @ModelAttribute(value="billDetail") BillDetailBean billDetail, final BindingResult bindingResult, ModelMap modelMap){
+		if(bindingResult.hasErrors()){
+			return "/bill/newDetail";
+		}
+		return "/bill/newBill";
+	}
 	
 	@RequestMapping(value="/backToHead",method=RequestMethod.GET)
 	public String backToHead(ModelMap modelMap){

@@ -30,7 +30,8 @@ public class BillBean implements Serializable{
 	private String total;
 	
 	private List<BillDetailBean> details;
-
+	private CustomerBean customer;
+	
 	@NotNull
 	private Integer idCustomer;
 	
@@ -116,7 +117,11 @@ public class BillBean implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	public CustomerBean getCustomer() {
+		return customer;
+	}
+	public void setCustomer(CustomerBean customer) {
+		this.customer = customer;
+	}
 
-	/** Métodos **/
-	
 }

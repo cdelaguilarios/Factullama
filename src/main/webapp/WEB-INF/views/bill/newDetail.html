@@ -19,6 +19,7 @@
 					</div>
 					<div class="widget-content nopadding">
 						<form class="form-horizontal" method="post" action="#" th:action="@{/admin/addDetail}" th:object="${billDetail}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+                           <input type="hidden" th:field="*{idBill}" th:value="${billDetail.idBill}" />
                            <div class="form-group" th:class="${#fields.hasErrors('quantity')}? 'form-group has-error' : 'form-group'">
                                <label class="control-label">Cantidad</label>
                                <div class="controls">
@@ -41,7 +42,7 @@
                                </div>
                            </div>
                            <div class="form-actions">
-                               <input type="submit" value="Cancelar" class="btn btn-primary" />
+                               <a href="javascript:history.go(-1)" class="btn btn-primary" >Cancelar</a>
                                <input type="submit" value="Agregar" class="btn btn-primary" />
                            </div>
                        </form>
