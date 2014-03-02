@@ -7,7 +7,8 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.llamita.factullamita.model.Currency;
+import com.llamita.factullamita.model.Customer;
+
 
 public class BillBean implements Serializable{
 
@@ -28,7 +29,6 @@ public class BillBean implements Serializable{
 	private String igv;
 	private String total;
 	
-	private List<Currency> currencies; 
 	private List<BillDetailBean> details;
 
 	@NotNull
@@ -80,12 +80,6 @@ public class BillBean implements Serializable{
 	public void setIdCurrency(Integer idCurrency) {
 		this.idCurrency = idCurrency;
 	}
-	public List<Currency> getCurrencies() {
-		return currencies;
-	}
-	public void setCurrencies(List<Currency> currencies) {
-		this.currencies = currencies;
-	}
 	public Date getIssueDate() {
 		return issueDate;
 	}
@@ -123,4 +117,6 @@ public class BillBean implements Serializable{
 		this.id = id;
 	}
 
+	/** Métodos **/
+	
 }
