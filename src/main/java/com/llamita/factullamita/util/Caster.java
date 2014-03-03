@@ -1,8 +1,8 @@
 package com.llamita.factullamita.util;
 
-import com.llamita.factullamita.model.Bill;
+import com.llamita.factullamita.model.BillDetail;
 import com.llamita.factullamita.model.Customer;
-import com.llamita.factullamita.view.BillBean;
+import com.llamita.factullamita.view.BillDetailBean;
 import com.llamita.factullamita.view.CustomerBean;
 
 public class Caster {
@@ -44,22 +44,14 @@ public class Caster {
 		return bean;
 	}
 	
-	
-	public static Bill billBeanToModel(BillBean bean){
-		Bill model = new Bill();
-		model.setReferralGuide(bean.getReferralGuide());
-		model.setConditions(bean.getConditions());
-		model.setExchangeRate(bean.getExchangeRate());
-		model.setSon(bean.getSon());
-		model.setIssueDate(bean.getIssueDate());
-		model.setIdCurrency(bean.getIdCurrency());
-		model.setSubtotal(bean.getSubtotal());
-		model.setIgv(bean.getIgv());
-		model.setTotal(bean.getTotal());
-		
-		//private List<Currency> currencies; 
-		//private List<BillDetailBean> details;
-		
+	public static BillDetail billDetailBeanToModel(BillDetailBean bean){
+		BillDetail model = new BillDetail();
+		model.setNumber(bean.getNumber());
+		model.setQuantity(bean.getQuantity());
+		model.setUnitPrice(bean.getUnitPrice());
+		model.setAmount(bean.getAmount());
+		model.setDescription(bean.getDescription());
+		model.setIdBill(bean.getIdBill());
 		return model;
 	}
 	

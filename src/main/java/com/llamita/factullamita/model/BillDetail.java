@@ -32,7 +32,7 @@ public class BillDetail implements Serializable{
 	private int quantity;
 	
 	@Column(name = "VC_PRECIO_UNITARIO")
-	private int unitPrice;
+	private String unitPrice;
 	
 	@Column(name = "VC_IMPORTE")
 	private String amount;
@@ -74,11 +74,11 @@ public class BillDetail implements Serializable{
 		this.quantity = quantity;
 	}
 
-	public int getUnitPrice() {
+	public String getUnitPrice() {
 		return unitPrice;
 	}
 
-	public void setUnitPrice(int unitPrice) {
+	public void setUnitPrice(String unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 

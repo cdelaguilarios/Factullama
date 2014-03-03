@@ -17,8 +17,8 @@
 						</span>
 						<h5>Factura # <span th:text="${bill.number}">00099999</span></h5>
 						<div class="buttons">
-							<a title="Icon Title" class="btn" href="#" th:href="@{|/admin/newDetail/${bill.id}|}"><i class="glyphicon glyphicon-arrow-left"></i> <span class="text">Atrás</span></a>
-							<a title="Icon Title" class="btn" href="#" th:href="@{|/admin/newDetail/${bill.id}|}"><i class="glyphicon glyphicon-plus-sign"></i> <span class="text">Agregar Detalle</span></a>
+							<a title="Icon Title" class="btn" href="javascript:history.go(-1)"><i class="glyphicon glyphicon-arrow-left"></i> <span class="text">Atrás</span></a>
+							<a title="Icon Title" class="btn" href="#" th:href="@{|/admin/newDetail/${bill.number}|}"><i class="glyphicon glyphicon-plus-sign"></i> <span class="text">Agregar Detalle</span></a>
 							<a title="Icon Title" class="btn" href="#"><i class="glyphicon glyphicon-print"></i> <span class="text">Imprimir</span></a>
 						</div>
 					</div>
@@ -26,7 +26,7 @@
 						<div class="invoice-content">
 							<div class="invoice-head">
 								<div class="invoice-meta">
-									Inversiones Electrocan S.A.C   /  <span class="invoice-number">RUC. 96558222331 </span>
+									<span th:text="${bill.customer.name}">Inversiones Electrocan S.A.C</span>   /  <span class="invoice-number" th:text="${bill.customer.ruc}">RUC. 96558222331 </span>
 								</div>
 								<div class="invoice-from">
 									<ul>
