@@ -1,6 +1,8 @@
 package com.llamita.factullamita.util;
 
+import com.llamita.factullamita.model.Bill;
 import com.llamita.factullamita.model.Customer;
+import com.llamita.factullamita.view.BillBean;
 import com.llamita.factullamita.view.CustomerBean;
 
 public class Caster {
@@ -40,6 +42,25 @@ public class Caster {
 		bean.setRuc(customer.getRuc());
 		bean.setAddress(customer.getAddress());
 		return bean;
+	}
+	
+	
+	public static Bill billBeanToModel(BillBean bean){
+		Bill model = new Bill();
+		model.setReferralGuide(bean.getReferralGuide());
+		model.setConditions(bean.getConditions());
+		model.setExchangeRate(bean.getExchangeRate());
+		model.setSon(bean.getSon());
+		model.setIssueDate(bean.getIssueDate());
+		model.setIdCurrency(bean.getIdCurrency());
+		model.setSubtotal(bean.getSubtotal());
+		model.setIgv(bean.getIgv());
+		model.setTotal(bean.getTotal());
+		
+		//private List<Currency> currencies; 
+		//private List<BillDetailBean> details;
+		
+		return model;
 	}
 	
 }
