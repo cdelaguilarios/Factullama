@@ -17,4 +17,8 @@ public class CurrencyRepository extends HibernateRepository{
 		return criteria.list();
 	}
 	
+	public Currency getCurrency(Integer idCurrency){
+		return (Currency) getSession().get(Currency.class, idCurrency);
+	}
+	
 }

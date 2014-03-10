@@ -18,4 +18,8 @@ public class ManageCurrencyLogic {
 		return currencyRepostory.listCurrency();
 	}
 	
+	public Currency getCurrency(Integer id){
+		return currencyRepostory.getCurrency(id);
+	}
+	
 }

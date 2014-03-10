@@ -7,7 +7,9 @@
 		<div id="content-header">
 			<h1>Nueva Factura</h1>
 		</div>
-		
+		<form method="post" action="#" th:action="@{/admin/billProcess}" th:object="${bill}" >
+		<input type="hidden" th:field="*{idCustomer}" />
+		<input type="hidden" th:field="*{idCurrency}" />
 		<div class="row">
 			<div class="col-12">
 				<div class="widget-box">
@@ -16,10 +18,10 @@
 							<i class="glyphicon glyphicon-th-list"></i>									
 						</span>
 						<h5>Factura # <span th:text="${bill.number}">00099999</span></h5>
+						<input type="hidden" th:field="*{number}" />
+						<input type="hidden" th:field="*{idCurrency}" />
 						<div class="buttons">
-							<a title="Icon Title" class="btn" href="javascript:history.go(-1)"><i class="glyphicon glyphicon-arrow-left"></i> <span class="text">Atrás</span></a>
-							<a title="Icon Title" class="btn" href="#" th:href="@{|/admin/newDetail/${bill.number}|}"><i class="glyphicon glyphicon-plus-sign"></i> <span class="text">Agregar Detalle</span></a>
-							<a title="Icon Title" class="btn" href="#"><i class="glyphicon glyphicon-print"></i> <span class="text">Imprimir</span></a>
+							<a title="Atras" class="btn" href="javascript:history.go(-1)"><i class="glyphicon glyphicon-arrow-left"></i> <span class="text">Atrás</span></a>
 						</div>
 					</div>
 					<div class="widget-content nopadding">
@@ -31,68 +33,114 @@
 								<div class="invoice-from">
 									<ul>
 										<li>
-										<span><strong>Fecha de Emisión:</strong><span th:text="${bill.issueDate}">2012-07-15</span></span>
-										<span><strong>T.C :</strong><span th:text="${bill.exchangeRate}">2.80</span></span>
-										<span><strong>Guia de Remisión :</strong><span th:text="${bill.referralGuide}">77343-2342</span></span>
-										<span><strong>Condiciones :</strong><span th:text="${bill.conditions}">2 Meses</span></span>
+										<span>
+											<strong>Fecha de Emisión:</strong>
+											<span th:text="${#dates.format(new java.util.Date(), 'dd-MMM-yyyy')}">2012-07-15</span>
+										</span>
+										<input type="hidden" th:field="*{issueDate}" th:value="${new java.util.Date()}"/>
+										<span>
+											<strong>T.C :</strong>
+											<span th:text="${bill.exchangeRate}">2.80</span>
+										</span>
+										<input type="hidden" th:field="*{exchangeRate}" th:value="${bill.exchangeRate}" />
+										<span>
+											<strong>Guia de Remisión :</strong>
+											<span th:text="${bill.referralGuide}">77343-2342</span>
+										</span>
+										<input type="hidden" th:field="*{referralGuide}" th:value="${bill.referralGuide}" />
+										<span>
+											<strong>Condiciones :</strong>
+											<span th:text="${bill.conditions}">2 Meses</span>
+										</span>
+										<input type="hidden" th:field="*{conditions}" th:value="${bill.conditions}" />
 										</li>
 									</ul>
-								</div>
+									<br/>
+									<button class="btn btn-danger btn-small" type="submit" name="addDetail">
+										<i class="glyphicon glyphicon-plus-sign"></i>  <span class="text">Agregar Detalle</span>
+									</button>
+									<button class="btn btn-warning btn-small" type="submit" name="recalculate">
+										<i class="glyphicon glyphicon-refresh"></i>  <span class="text">Recalcular</span>
+									</button>
+									<button class="btn btn-success btn-small" type="submit" name="save">
+										<i class="glyphicon glyphicon-ok-sign"></i>  <span class="text">Guardar</span>
+									</button>
+									<button class="btn btn-info btn-small" type="submit" name="print">
+										<i class="glyphicon glyphicon-print"></i>  <span class="text">Imprimir</span>
+									</button>
+								</div>		
 							</div>
 							<div>
-								<table class="table table-bordered table-striped table-hover">
+								<table class="table table-bordered table-striped table-hover" style="width: auto;">
 								<thead>
 									<tr>
-										<th>Cantidad</th>
-										<th>Descripcion</th>
-										<th>P. Unitario</th>
-										<th>Importe</th>
+										<th style="width: 2%;"></th>
+										<th style="width: 10%;">Cantidad</th>
+										<th style="width: 50%;">Descripcion</th>
+										<th style="width: 10%;">P. Unitario</th>
+										<th style="width: 10%;">Importe</th>
+										<th style="width: 1%;">Opciones</th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
-										<th class="total-label" colspan="3">
-											 Subtotal:
+										<th class="total-label" colspan="4">
+											 Subtotal <span th:text="${' (' + bill.currency.symbol + ') '}">(S/.)</span> :
 										</th>
 										<th class="total-amount" th:text="${bill.subtotal}">
-											 $920.00
+											 920.00
 										</th>
 									</tr>
 									<tr>
-										<th class="total-label" colspan="3">
-											 IGV:
+										<th class="total-label" colspan="4">
+											 IGV <span th:text="${' (' + bill.currency.symbol + ') '}">(S/.)</span> :
 										</th>
 										<th class="total-amount" th:text="${bill.igv}">
-											 $920.00
+											 920.00
 										</th>
 									</tr>
 									<tr>
-										<th class="total-label" colspan="3">
-											 Total:
+										<th class="total-label" colspan="4">
+											 Total <span th:text="${' (' + bill.currency.symbol + ') '}">(S/.)</span> :
 										</th>
 										<th class="total-amount" th:text="${bill.total}">
-											 $920.00
+											 920.00
 										</th>
 									</tr>
 								</tfoot>
 								<tbody>
-								<tr th:each="detail : ${bill.details}">
-									<td th:text="${detail.quantity}">1</td>
-									<td th:text="${detail.description}">Vivamus sed auctor nibh congue, ligula</td>
-									<td th:text="${detail.unitPrice}">$20.00</td>
-									<td th:text="${detail.amount}">$20.00</td>
+								<tr th:each="detail,detailStat : *{details}">
+									<td th:text="${detailStat.count}">1</td>
+									<input type="hidden" th:field="*{details[__${detailStat.index}__].number}" th:value="${detailStat.count}" />
+									<td>
+										<input type="text" th:field="*{details[__${detailStat.index}__].quantity}" th:errorclass="fieldError" style="width: 100%;" />
+									</td>
+									<td>
+										<input type="text" th:field="*{details[__${detailStat.index}__].description}" th:errorclass="fieldError" style="width: 100%;" />
+									</td>
+									<td>
+										<input type="text" th:field="*{details[__${detailStat.index}__].unitPrice}" th:errorclass="fieldError"  style="width: 100%;"/>
+									</td>
+									<td style="width: 10%;" th:text="${detail.amount}">
+										$ 0.00
+									</td>
+									<td>
+										<button class="btn btn-danger btn-mini" type="submit" name="removeDetail" th:value="${detailStat.index}" >
+											<i class="glyphicon glyphicon-minus-sign"></i>  <span class="text">Eliminar</span>
+										</button>
+									</td>
 								</tr>
 								</tbody>
 								</table>
 							</div>
 							<p class="amount-word">
-								SON: <span th:text="${bill.son}">Nine Hundred Twenty Dollars</span>
+								SON: <input type="text" class="form-control input-small" name="son" id="son" th:field="*{son}" />
 							</p>
 						</div>
 					</div>
 				</div>			
 			</div>
 		</div>
-	
+		</form>
 	</div>
 </html>

@@ -2,6 +2,8 @@ package com.llamita.factullamita.view;
 
 import java.io.Serializable;
 
+import com.llamita.factullamita.util.Formatter;
+
 public class BillDetailBean implements Serializable{
 
 	/**
@@ -51,7 +53,7 @@ public class BillDetailBean implements Serializable{
 		this.unitPrice = unitPrice;
 	}
 	public String getAmount() {
-		return amount;
+		return Formatter.amount(calculateAmount());
 	}
 	public void setAmount(String amount) {
 		this.amount = amount;
@@ -63,6 +65,13 @@ public class BillDetailBean implements Serializable{
 		this.idBill = idBill;
 	}
 	
-	
+	public double calculateAmount(){
+		double amountCal = 0;
+		if(unitPrice!=null && unitPrice.trim().length()>0 && unitPrice.contains(".")){
+			double price = Double.parseDouble(unitPrice.trim());
+			amountCal = price * quantity;
+		}
+		return amountCal;
+	}
 	
 }

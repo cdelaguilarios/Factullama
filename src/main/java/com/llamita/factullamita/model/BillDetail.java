@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name ="DETALLE_FACTURA")
+@Table(name="DETALLE_FACTURA")
 public class BillDetail implements Serializable{
 
 	/**
