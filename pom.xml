@@ -7,10 +7,10 @@
 	<version>1.0</version>
 	<packaging>war</packaging>
 
-	<name>FactuLlamita</name>
+	<name>factuLlamita</name>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  -->
 		<javax-servlet.version>2.5</javax-servlet.version>
 		<javax-validation.version>1.1.0.Final</javax-validation.version>
 
@@ -29,13 +29,13 @@
 
 	<dependencies>
 		<!-- jboss openshift -->
-		<dependency>
+		<!--<dependency>
 		  <groupId>org.jboss.spec</groupId>
 		  <artifactId>jboss-javaee-6.0</artifactId>
 		  <version>1.0.0.Final</version>
 		  <type>pom</type>
 		  <scope>provided</scope>
-		</dependency>
+		</dependency> -->
 	
 		<!-- Spring framework (Core - MVC - Security - Data for mongodb) -->
 		<dependency>
@@ -181,7 +181,7 @@
 		<outputDirectory>${basedir}/target/classes</outputDirectory>
 
 		<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
-		<testOutputDirectory>${base}/target/test-classes</testOutputDirectory>
+		<testOutputDirectory>${basedir}/target/test-classes</testOutputDirectory>
 
 		<resources>
 			<resource>
@@ -218,12 +218,12 @@
 		</plugins>
 	</build>
 	
-	<profiles>
+	<!--<profiles>
     <profile>
-     <!-- When built in OpenShift the 'openshift' profile will be used when invoking mvn. -->
+      When built in OpenShift the 'openshift' profile will be used when invoking mvn. -->
      <!-- Use this profile for any OpenShift specific customization your app will need. -->
      <!-- By default that is to put the resulting archive into the 'deployments' folder. -->
-     <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
+     <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html 
      <id>openshift</id>
      <build>
         <finalName>factullamita</finalName>
@@ -239,6 +239,6 @@
         </plugins>
       </build>
     </profile>
-  </profiles>
+  </profiles>-->
 
 </project>

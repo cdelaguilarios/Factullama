@@ -2,11 +2,17 @@ package com.llamita.factullamita.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -61,6 +67,10 @@ public class Bill implements Serializable{
 	
 	@Column(name = "IN_IDCLIENTE")
 	private Integer idCustomer;
+	
+	@OneToMany(fetch=FetchType.EAGER)
+	@JoinColumn(name="IN_IDFACTURA", referencedColumnName = "IN_IDFACTURA", insertable = false, updatable = false)
+	private List<BillDetail> details;
 
     public Bill() {}
 
@@ -174,6 +184,14 @@ public class Bill implements Serializable{
 
 	public void setIdCustomer(Integer idCustomer) {
 		this.idCustomer = idCustomer;
+	}
+
+	public List<BillDetail> getDetails() {
+		return details;
+	}
+
+	public void setDetails(List<BillDetail> details) {
+		this.details = details;
 	}
 
 	
