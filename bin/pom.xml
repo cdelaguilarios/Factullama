@@ -191,7 +191,7 @@
 
 		<testResources>
 			<testResource>
-				<directory>${basedir}/test/main/resources</directory>
+				<directory>${basedir}/src/test/resources</directory>
 			</testResource>
 		</testResources>
 
