@@ -1,8 +1,10 @@
-<!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layouts/base">
 <div id="content-header" layout:fragment="content">
-	<h1>Generaci�n de factura</h1>
+	<h1>Generación de factura</h1>
+    <script type="text/javascript">
+        window.onload=function(){$("#sidebar>ul>li:eq(2)").addClass("active");}
+    </script>
 </div>
 </html>

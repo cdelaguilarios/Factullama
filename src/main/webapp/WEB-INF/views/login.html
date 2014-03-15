@@ -14,19 +14,7 @@
         <div id="logo">
             <img th:src="@{/img/logo.png}" />
         </div>
-        <div th:if="${error} == true">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <ul class="list-group">
-                        <li class="list-group-item list-group-item-danger">
-                            Usuario y/o contraseña incorrectas
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
         <div id="loginbox">
-
             <form id="loginform" action="#" th:action="@{/login/authenticate}" method="post">
                 <p>Ingrese su usuario y/o contraseña</p>
                 <div class="input-group">
@@ -41,11 +29,15 @@
                     </span>
                     <input class="form-control" placeholder="Contraseña" name="password" />
                 </div>
-                <div>
-                    
-                </div>
-                <div class="pull-right">
-                    <input type="submit" class="btn btn-success" value="Login" />
+                <div class="form-actions">
+                    <div th:if="${error} == true">
+                        <div class="pull-left">
+                            <strong style="color:#843534">Usuario y/o contraseña incorrectas</strong>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <input type="submit" class="btn btn-success" value="Login" />
+                    </div>
                 </div>
             </form>
         </div>
