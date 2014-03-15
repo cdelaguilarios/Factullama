@@ -7,14 +7,10 @@
                            http://www.springframework.org/schema/mvc
                            http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
-    <mvc:resources mapping="/admin/css/**" location="/WEB-INF/public/css/"/>
-    <mvc:resources mapping="/admin/js/**" location="/WEB-INF/public/js/"/>
-    <mvc:resources mapping="/admin/img/**" location="/WEB-INF/public/img/"/>
-    <mvc:resources mapping="/admin/fonts/**" location="/WEB-INF/public/fonts/"/>
-    
-    <mvc:resources mapping="/sb/css/**" location="/WEB-INF/public/sb/css/"/>
-    <mvc:resources mapping="/sb/fonts/**" location="/WEB-INF/public/sb/fonts/"/>
+    <mvc:resources mapping="/css/**" location="/WEB-INF/public/css/"/>
+    <mvc:resources mapping="/js/**" location="/WEB-INF/public/js/"/>
+    <mvc:resources mapping="/img/**" location="/WEB-INF/public/img/"/>
+    <mvc:resources mapping="/fonts/**" location="/WEB-INF/public/fonts/"/>
 
     <import resource="factullamita-thymeleaf.xml"/>
-
 </beans>
