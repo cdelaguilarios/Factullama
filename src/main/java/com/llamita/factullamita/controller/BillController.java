@@ -21,7 +21,7 @@ public class BillController {
 	public ModelAndView generatePdf(@Valid @ModelAttribute(value="bill") BillBean bill,final BindingResult bindingResult, final ModelMap modelMap){
 		log.info("* Controlador: Bill - GenerarPDF [Inicio] *");
 		if(bindingResult.hasErrors()){
-			return new ModelAndView("/customer/list");
+			return new ModelAndView("/index");
 		}
 		
 		ModelAndView m = new ModelAndView("GeneratePdf");
