@@ -17,7 +17,7 @@ public class BillController {
 	@RequestMapping(value="/admin/pdf",method=RequestMethod.GET)
 	public ModelAndView generatePdf(@Valid @ModelAttribute(value="bill") BillBean bill,final BindingResult bindingResult, final ModelMap modelMap){
 		if(bindingResult.hasErrors()){
-			return new ModelAndView("/customer/list");
+			return new ModelAndView("/index");
 		}
 		
 		ModelAndView m = new ModelAndView("GeneratePdf");
