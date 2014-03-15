@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 
+	@RequestMapping({"/"})
+	public String initLogin(){
+		return "login";
+	}
+	
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(@RequestParam(required = false) String error, ModelMap modelMap) {
 

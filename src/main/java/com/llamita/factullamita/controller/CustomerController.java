@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -31,6 +32,8 @@ import com.llamita.factullamita.view.CustomerBean;
 @RequestMapping(value="/admin")
 public class CustomerController {
 	
+	private Logger log = Logger.getLogger(CustomerController.class);
+	
 	@Autowired
 	private ManageCustomerLogic manageCustomerLogic;
 
@@ -47,6 +50,7 @@ public class CustomerController {
 
 	@RequestMapping(value="/customer",method=RequestMethod.GET)
 	public String listCustomers(ModelMap modelMap){
+		log.info("* Recuperando Clientes ...");
 		List<Customer> customers = manageCustomerLogic.listCustomer();
         modelMap.addAttribute("customers", customers);
         
@@ -55,6 +59,7 @@ public class CustomerController {
 	
 	@RequestMapping(value="/newCustomer",method=RequestMethod.GET)
 	public String newCustomerInit(ModelMap modelMap){
+		log.info("* Nuevo Cliente - Iniciar formulario ...");
 		CustomerBean customer = new CustomerBean();
 		modelMap.addAttribute("customer",customer);
 		return "/customer/new";
@@ -62,6 +67,7 @@ public class CustomerController {
 	
 	@RequestMapping(value="/newCustomer",method=RequestMethod.POST)
 	public String newcustomer(@Valid @ModelAttribute(value="customer") CustomerBean customer,final BindingResult bindingResult, final ModelMap modelMap ){
+		log.info("* Nuevo Cliente - registrar ...");
 		if(bindingResult.hasErrors()){
 			return "/customer/new";
 		}
@@ -73,6 +79,7 @@ public class CustomerController {
 	
 	@RequestMapping(value="/updCustomer/{idCustomer}",method=RequestMethod.GET)
 	public String updCustomerInit(@PathVariable Integer idCustomer, ModelMap modelMap){
+		log.info("* Actualizar Cliente - Iniciar formulario ...");
 		CustomerBean customer = Caster.customerModelToBean(manageCustomerLogic.getCustomer(idCustomer));
 		modelMap.addAttribute("customer",customer);
 		return "/customer/upd";
@@ -80,6 +87,7 @@ public class CustomerController {
 	
 	@RequestMapping(value="/updCustomer",method=RequestMethod.POST)
 	public String updcustomer(@Valid @ModelAttribute(value="customer") CustomerBean customer,final BindingResult bindingResult, final ModelMap modelMap ){
+		log.info("* Actualizar Cliente - registrar ...");
 		if(bindingResult.hasErrors()){
 			return "/customer/upd";
 		}
@@ -91,6 +99,7 @@ public class CustomerController {
 	
 	@RequestMapping(value="/addBill/{idCustomer}",method=RequestMethod.GET)
 	public String addBillInit(@PathVariable Integer idCustomer, ModelMap modelMap){
+		log.info("* Generar Factura - Iniciar formulario ...");
 		BillBean bill = new BillBean();
 		bill.setIdCustomer(idCustomer);
 		modelMap.addAttribute("bill", bill);
@@ -99,6 +108,7 @@ public class CustomerController {
 
 	@RequestMapping(value="/fillBillDetail",method=RequestMethod.POST)
 	public String fillBillDetail(@Valid @ModelAttribute(value="bill") BillBean bill,final BindingResult bindingResult, ModelMap modelMap){
+		log.info("* Generar Factura - Cabecera ...");
 		if(bindingResult.hasErrors()){
 			return "/bill/newHead";
 		}
