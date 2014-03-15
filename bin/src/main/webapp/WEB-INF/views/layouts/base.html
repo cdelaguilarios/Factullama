@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Factullamita</title>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../../css/bootstrap.min.css" th:href="@{/admin/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" href="../../css/bootstrap-glyphicons.css" th:href="@{/admin/css/bootstrap-glyphicons.css}"/>
+		<link rel="stylesheet" href="../../css/fullcalendar.css" th:href="@{/admin/css/fullcalendar.css}"/>	
+		<link rel="stylesheet" href="../../css/unicorn.main.css" th:href="@{/admin/css/unicorn.main.css}"/>
+		<link rel="stylesheet" href="../../css/unicorn.grey.css" class="skin-color" th:href="@{/admin/css/unicorn.grey.css}"/>
+		<link rel="stylesheet" href="../../css/font-awesome.css" class="skin-color" th:href="@{/admin/css/font-awesome.css}"/>
+        <link rel="stylesheet" href="../../css/jquery-ui.css" th:href="@{/admin/css/jquery-ui.css}" />
+		<link rel="stylesheet" href="../../css/icheck/flat/blue.css" th:href="@{/admin/css/icheck/flat/blue.css}" />
+		<link rel="stylesheet" href="../../css/select2.css" th:href="@{/admin/css/select2.css}" />
+		<link rel="stylesheet" href="../../css/colorpicker.css" th:href="@{/admin/css/colorpicker.css}" />
+        <link rel="stylesheet" href="../../css/datepicker.css" th:href="@{/admin/css/datepicker.css}" />
+        <link rel="icon" type="image/png" href="../../img/icon.png" th:href="@{/admin/img/icon.png}"/>
+	</head>
+	<body>
+		<div id="header">
+			<h1><a href="index"></a></h1>	
+			<a id="menu-trigger" href="#"><i class="glyphicon glyphicon-align-justify"></i></a>	
+		</div>
+		<div id="user-nav">
+            <ul class="btn-group">
+                <li class="btn" ><a title="" href="#"><i class="glyphicon glyphicon-user"></i> <span class="text">Perfil</span></a></li>
+                <li class="btn"><a title="" href="login.html"><i class="glyphicon glyphicon-share-alt"></i> <span class="text">Cerrar Sesion</span></a></li>
+            </ul>
+        </div>
+            
+		<div id="sidebar">
+			<!--<a href="#" class="hide"><i class="glyphicon glyphicon-home"></i> Dashboard</a>-->
+			<ul>
+				<li class="active"><a href="#" th:href="@{/admin/index}"><i class="glyphicon glyphicon-home"></i><span>General</span></a></li>	
+				<li><a href="#" th:href="@{/admin/customer}"><i class="fa fa-users fa-lg"></i> <span>Clientes</span></a></li>		
+				<li><a href="#" th:href="@{/admin/bill}"><i class="fa fa-dollar fa-lg"></i> <span>Facturas</span></a></li>	
+			</ul>		
+		</div>
+		
+		<div id="content">
+			<div layout:fragment="content"></div>
+		</div>
+		<div class="row">
+			<div id="footer" class="col-12">
+				2010 - 2014 &copy; Como la llamita.
+			</div>
+		</div>
+			<script src="../../js/excanvas.min.js" th:src="@{/admin/js/excanvas.min.js}"></script>
+            <script src="../../js/jquery.min.js" th:src="@{/admin/js/jquery.min.js}"></script>
+            <script src="../../js/jquery-ui.custom.js" th:src="@{/admin/js/jquery-ui.custom.js}"></script>
+            <script src="../../js/bootstrap.min.js" th:src="@{/admin/js/bootstrap.min.js}"></script>
+            <script src="../../js/jquery.flot.min.js" th:src="@{/admin/js/jquery.flot.min.js}"></script>
+            <script src="../../js/jquery.flot.resize.min.js" th:src="@{/admin/js/jquery.flot.resize.min.js}"></script>
+            <script src="../../js/jquery.sparkline.min.js" th:src="@{/admin/js/jquery.sparkline.min.js}"></script>
+            <script src="../../js/select2.min.js" th:src="@{/admin/js/select2.js}"></script>
+            
+            <script src="../../js/fullcalendar.min.js" th:src="@{/admin/js/fullcalendar.min.js}"></script>
+            <script src="../../js/jquery.jpanelmenu.min.js" th:src="@{/admin/js/jquery.jpanelmenu.min.js}"></script>
+            
+            <script src="../../js/unicorn.js" th:src="@{/admin/js/unicorn.js}"></script>
+            <script src="../../js/unicorn.form_common.js" th:src="@{/admin/js/unicorn.form_common.js}"></script>
+            <script src="../../js/unicorn.dashboard.js" th:src="@{/admin/js/unicorn.dashboard.js}"></script>
+            
+	</body>
+</html>
