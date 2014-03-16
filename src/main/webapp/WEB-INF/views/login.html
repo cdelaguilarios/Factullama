@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Factullamita</title>
-    <meta charset="UTF-8" />
+    <meta charset="ISO-8859-1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
     <link rel="stylesheet" th:href="@{/css/bootstrap-glyphicons.css}" />
@@ -16,7 +16,7 @@
         </div>
         <div id="loginbox">
             <form id="loginform" action="#" th:action="@{/login/authenticate}" method="post">
-                <p>Ingrese su usuario y/o contraseÃ±a</p>
+                <p>Ingrese su usuario y/o contraseña</p>
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="glyphicon glyphicon-user"></i>
@@ -27,12 +27,12 @@
                     <span class="input-group-addon">
                         <i class="glyphicon glyphicon-lock"></i>
                     </span>
-                    <input class="form-control" placeholder="ContraseÃ±a" name="password" />
+                    <input type="password" class="form-control" placeholder="Contraseña" name="password" />
                 </div>
                 <div class="form-actions">
                     <div th:if="${error} == true">
                         <div class="pull-left">
-                            <strong style="color:#843534">Usuario y/o contraseÃ±a incorrectas</strong>
+                            <strong style="color:#843534">Usuario y/o contraseña incorrectas</strong>
                         </div>
                     </div>
                     <div class="pull-right">
