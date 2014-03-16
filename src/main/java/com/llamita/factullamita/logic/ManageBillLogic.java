@@ -31,4 +31,8 @@ public class ManageBillLogic {
 		return billRepository.getBillByField("number", number);
 	}
 	
+	public Bill getBill(Integer id){
+		return billRepository.getBill(id);
+	}
+	
 }

@@ -20,6 +20,10 @@ public class BillRepository extends HibernateRepository{
 		return criteria.list();
 	}
 	
+	public Bill getBill(Integer id){
+		return (Bill) getSession().get(Bill.class, id);
+	}
+	
 	public Bill getBillByField(String field, Object value){
 		Bill ret = null;
 		Criteria criteria = getSession().createCriteria(Bill.class);

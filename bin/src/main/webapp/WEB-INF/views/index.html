@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="layouts/base">
-    
+      layout:decorator="layouts/base">    
     <div  layout:fragment="content">
     	<div id="content-header">
 			<h1>Sistema de Facturación</h1>
 			<div class="row">
 					<div class="col-12">
 						<div class="alert alert-info">
-							Bienvenido al Sistema de Facturación <strong>Factullamita</strong>. 
+								 al Sistema de Facturación <strong>Factullamita</strong>. 
 							En este sistema podrá registrar tanto a sus clientes a los cuales factura; así como
 							generar sus facturas y almacenarlas para luego poder imprimirlas bajo el esquema de 
 							impresora a puntos!
@@ -21,6 +20,9 @@
 			 
 			</p>
 		</div>
+		
+    <script type="text/javascript">
+    	window.onload=function(){$("#sidebar>ul>li:eq(0)").addClass("active");}
+    </script>
     </div>
-    
 </html>

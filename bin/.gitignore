@@ -17,3 +17,5 @@
 *.war
 *.ear
 target/
+/src
+/pom.xml
