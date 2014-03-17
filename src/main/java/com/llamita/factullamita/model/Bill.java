@@ -19,9 +19,6 @@ import javax.persistence.Table;
 @Table(name="FACTURA")
 public class Bill implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6068768337925415452L;
 
 	@Id

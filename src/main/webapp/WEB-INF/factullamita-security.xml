@@ -19,10 +19,6 @@
     </security:http>
 
     <security:authentication-manager>
-        <security:authentication-provider>
-            <security:user-service>
-                <security:user name="admin" password="admin" authorities="ROLE_ADMINISTRADOR" />
-            </security:user-service>
-        </security:authentication-provider>
+        <security:authentication-provider user-service-ref="adminDetailsService" />
     </security:authentication-manager>
 </beans>

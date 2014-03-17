@@ -15,9 +15,9 @@
 						<span class="icon">
 							<i class="glyphicon glyphicon-align-justify"></i>									
 						</span>
-						<h5>Creación de cliente</h5>
+						<h5>CreaciÃ³n de cliente</h5>
 						<div class="buttons">
-							<a title="Icon Title" class="btn btn-small" href="#" th:href="@{|/admin/customer|}"><i class="glyphicon glyphicon-arrow-left"></i> <span class="text">Atrás</span></a>
+							<a title="Icon Title" class="btn btn-small" href="#" th:href="@{/admin/customer}"><i class="glyphicon glyphicon-arrow-left"></i> <span class="text">AtrÃ¡s</span></a>
 						</div>
 					</div>
 					<div class="widget-content nopadding">
@@ -37,7 +37,7 @@
                                </div>
                            </div>
                            <div class="form-group" th:class="${#fields.hasErrors('address')}? 'form-group has-error' : 'form-group'">
-                               <label class="control-label">Dirección</label>
+                               <label class="control-label">Direcciï¿½n</label>
                                <div class="controls">
                                    <input type="text" class="form-control input-small" name="address" id="address" th:field="*{address}"/><br/>
                                    <span class="help-inline" for="address" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Incorrect Direccion</span>
