@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ProfileController {
 
-    @RequestMapping(value = "/cambiar-pwd", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/cambiar-pwd", method = RequestMethod.GET)
     public String cambiarPwdInit(ModelMap modelMap) {
         AdminPwdBean admin = new AdminPwdBean();
         modelMap.addAttribute("admin", admin);
