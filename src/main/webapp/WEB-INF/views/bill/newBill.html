@@ -21,7 +21,7 @@
 						<input type="hidden" th:field="*{number}" />
 						<input type="hidden" th:field="*{idCurrency}" />
 						<div class="buttons">
-							<a title="Atras" class="btn" href="javascript:history.go(-1)"><i class="glyphicon glyphicon-arrow-left"></i> <span class="text">Atrás</span></a>
+							<a title="Atras" class="btn" href="javascript:history.go(-1)"><i class="glyphicon glyphicon-arrow-left"></i> <span class="text">Atrï¿½s</span></a>
 						</div>
 					</div>
 					<div class="widget-content nopadding">
@@ -34,7 +34,7 @@
 									<ul>
 										<li>
 										<span>
-											<strong>Fecha de Emisión:</strong>
+											<strong>Fecha de EmisiÃ³n:</strong>
 											<span th:text="${#dates.format(new java.util.Date(), 'dd-MMM-yyyy')}">2012-07-15</span>
 										</span>
 										<input type="hidden" th:field="*{issueDate}" th:value="${new java.util.Date()}"/>
@@ -44,7 +44,7 @@
 										</span>
 										<input type="hidden" th:field="*{exchangeRate}" th:value="${bill.exchangeRate}" />
 										<span>
-											<strong>Guia de Remisión :</strong>
+											<strong>Guia de RemisiÃ³n :</strong>
 											<span th:text="${bill.referralGuide}">77343-2342</span>
 										</span>
 										<input type="hidden" th:field="*{referralGuide}" th:value="${bill.referralGuide}" />
@@ -121,7 +121,7 @@
 									<td>
 										<input type="text" th:field="*{details[__${detailStat.index}__].unitPrice}" th:errorclass="fieldError"  style="width: 100%;"/>
 									</td>
-									<td style="width: 10%;" th:text="${detail.amount}">
+									<td class="text-right" style="width: 10%;" th:text="${detail.amount}">
 										$ 0.00
 									</td>
 									<td>

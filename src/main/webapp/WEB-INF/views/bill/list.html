@@ -26,19 +26,19 @@
 						<table id="tableFilter" class="table table-bordered table-striped table-hover">
 							<thead>
 								<tr>
-									<th>Número</th>
-									<th>Fecha de Emisión</th>
-									<th>Guia de Remisión</th>
+									<th>Nï¿½mero</th>
+									<th>Fecha de Emisiï¿½n</th>
+									<th>Guia de Remisiï¿½n</th>
 									<th>Total</th>
-									<th>Operación</th>
+									<th>Operaciï¿½n</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="bill : ${bills}">
-									<td th:text="${bill.number}">1111111</td>
+									<td th:text="${bill.number}" class="text-center">1111111</td>
 									<td th:text="${bill.issueDate}">12-06-14</td>
 									<td th:text="${bill.referralGuide}">23323-2323</td>
-									<td th:text="${bill.total}">400.00</td>
+									<td th:text="${bill.total}" class="text-right" >400.00</td>
 									<td>
 										<a href="#" class="btn btn-primary btn-small" th:href="@{|/admin/viewBill/${bill.id}|}" target="_blank"><i class="glyphicon glyphicon-eye-open"></i>     Ver</a>
 										<a href="#" class="btn btn-primary btn-small" th:href="@{|/admin/updBill/${bill.id}|}"><i class="glyphicon glyphicon-pencil"></i>     Editar</a>
