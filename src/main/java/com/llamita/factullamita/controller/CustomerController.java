@@ -131,16 +131,16 @@ public class CustomerController {
 		return "/bill/newBill";
 	}
 	
-	@RequestMapping(value="/viewBill/{idBill}",method=RequestMethod.GET)
-	public String viewBillInit(@PathVariable Integer idBill, ModelMap modelMap){
-		log.info("* Controlador: Customer - Ver factura [Inicio] *");
-		BillBean bill = Caster.billModelToBean(manageBillLogic.getBill(idBill));
-		bill.setCustomer(Caster.customerModelToBean(manageCustomerLogic.getCustomer(bill.getIdCustomer())));
-		bill.setCurrency(Caster.currencyModelToBean(manageCurrencyLogic.getCurrency(bill.getIdCurrency())));
-		modelMap.addAttribute("bill", bill);
-		log.info("* Controlador: Customer - Ver factura [Fin] *");
-		return "/bill/viewBill";
-	}
+//	@RequestMapping(value="/viewBill/{idBill}",method=RequestMethod.GET)
+//	public String viewBillInit(@PathVariable Integer idBill, ModelMap modelMap){
+//		log.info("* Controlador: Customer - Ver factura [Inicio] *");
+//		BillBean bill = Caster.billModelToBean(manageBillLogic.getBill(idBill));
+//		bill.setCustomer(Caster.customerModelToBean(manageCustomerLogic.getCustomer(bill.getIdCustomer())));
+//		bill.setCurrency(Caster.currencyModelToBean(manageCurrencyLogic.getCurrency(bill.getIdCurrency())));
+//		modelMap.addAttribute("bill", bill);
+//		log.info("* Controlador: Customer - Ver factura [Fin] *");
+//		return "/bill/viewBill";
+//	}
 
 	@RequestMapping(value="/bill",method=RequestMethod.GET)
 	public String listBills(ModelMap modelMap){
@@ -216,5 +216,17 @@ public class CustomerController {
 		log.info("* Controlador: Customer - Imprimir Factura [Fin] *");
 		return m;
     }
+	
+	@RequestMapping(value="/viewBill/{idBill}",method=RequestMethod.GET)
+	public ModelAndView viewBillInit(@PathVariable Integer idBill, ModelMap modelMap){
+		log.info("* Controlador: Customer - Ver factura [Inicio] *");
+		BillBean bill = Caster.billModelToBean(manageBillLogic.getBill(idBill));
+		bill.setCustomer(Caster.customerModelToBean(manageCustomerLogic.getCustomer(bill.getIdCustomer())));
+		bill.setCurrency(Caster.currencyModelToBean(manageCurrencyLogic.getCurrency(bill.getIdCurrency())));
+		ModelAndView m = new ModelAndView("GeneratePdf");
+		m.getModelMap().addAttribute("bill", bill);
+		log.info("* Controlador: Customer - Ver factura [Fin] *");
+		return m;
+	}
 
 }

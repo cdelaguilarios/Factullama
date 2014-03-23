@@ -15,16 +15,17 @@ public class CustomerBean implements Serializable{
 	private int id;
 	
 	@NotNull
-	@Size(min=1,max=100)
+	@Size(min=1,max=100,message="El nombre es obligatorio debe tener un máximo de 100 caracteres.")
 	private String name;
 	
 	@NotNull
-	@Size(min=1,max=11)
+	@Size(min=1,max=11,message="El RUC debe contar con 11 dígitos.")
 	private String ruc;
 	
 	@NotNull
-	@Size(min=1,max=200)
+	@Size(min=1,max=200,message="La dirección es obligatoria debe tener un máximo de 200 caracteres.")
 	private String address;
+
 
 	public int getId() {
 		return id;
