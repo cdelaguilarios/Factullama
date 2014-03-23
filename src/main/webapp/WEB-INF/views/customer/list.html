@@ -34,8 +34,10 @@
 									<td th:text="${customer.name}">Cliente X</td>
 									<td th:text="${customer.ruc}">9999999999</td>
 									<td th:text="${customer.address}">La Victoria</td>
-									<td><a href="#" class="btn btn-primary btn-small" th:href="@{|/admin/updCustomer/${customer.id}|}"><i class="glyphicon glyphicon-pencil"></i> Actualizar</a>
+									<td>
+										<a href="#" class="btn btn-primary btn-small" th:href="@{|/admin/updCustomer/${customer.id}|}"><i class="glyphicon glyphicon-pencil"></i> Actualizar</a>
 										<a href="#" class="btn btn-primary btn-small" th:href="@{|/admin/addBill/${customer.id}|}"><i class="glyphicon glyphicon-plus-sign"></i> Facturar</a>
+										<a href="#" class="btn btn-primary btn-small" th:href="@{|/admin/addBill/${customer.id}|}"><i class="glyphicon glyphicon-trash"></i> Eliminar</a>
 									</td>
 								</tr>
 							</tbody>
