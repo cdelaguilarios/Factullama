@@ -24,7 +24,6 @@
                 <value>com.llamita.factullamita.model.Currency</value>
                 <value>com.llamita.factullamita.model.Administrator</value>
             </list>
-
         </property>
         <property name="hibernateProperties">
             <props>
