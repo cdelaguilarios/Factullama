@@ -4,6 +4,9 @@
 	
 	<div layout:fragment="content">
 	
+		<script src="../../js/jquery.dataTables.min.js" th:src="@{/js/jquery.dataTables.min.js}"></script>
+		<script src="../../js/tables.js" th:src="@{/js/tables.js}"></script>
+		
 		<div id="content-header">
 			<h1>Facturas
 				<!-- <a href="#" class="btn btn-default" style="float: right; margin-right:20px; margin-top:-20px;"><i class="glyphicon glyphicon-plus"></i> Nuevo</a>  -->
@@ -20,14 +23,14 @@
 						<h5>Lista de Facturas</h5>
 					</div>
 					<div class="widget-content nopadding">
-						<table class="table table-bordered table-striped table-hover">
+						<table id="tableFilter" class="table table-bordered table-striped table-hover">
 							<thead>
 								<tr>
-									<th>Número</th>
-									<th>Fecha de Emisión</th>
-									<th>Guia de Remisión</th>
+									<th>Nï¿½mero</th>
+									<th>Fecha de Emisiï¿½n</th>
+									<th>Guia de Remisiï¿½n</th>
 									<th>Total</th>
-									<th>Operación</th>
+									<th>Operaciï¿½n</th>
 								</tr>
 							</thead>
 							<tbody>
