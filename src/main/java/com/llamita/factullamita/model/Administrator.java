@@ -3,9 +3,6 @@ package com.llamita.factullamita.model;
 import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * Created by fabiosalasm on 16/03/14.
- */
 @Entity
 @Table(name="ADMINISTRATOR")
 public class Administrator implements Serializable {

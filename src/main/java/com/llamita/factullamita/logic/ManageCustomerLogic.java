@@ -15,6 +15,7 @@ public class ManageCustomerLogic {
 	private CustomerRepository customerRepository;
 	
 	public void addCustomer(Customer customer){
+		customer.setState("1");
 		customerRepository.addOrUpdateCustomer(customer);
 	}
 	
@@ -30,4 +31,13 @@ public class ManageCustomerLogic {
 		return customerRepository.getCustomer(id);
 	}
 	
+	public void delCustomer(Integer idCustomer){
+		if(idCustomer!=null){
+			Customer customer = getCustomer(idCustomer);
+			if(customer!=null){
+				customer.setState("0");
+				customerRepository.addOrUpdateCustomer(customer);
+			}
+		}
+	}
 }
