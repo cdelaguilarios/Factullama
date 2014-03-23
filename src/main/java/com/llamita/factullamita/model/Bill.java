@@ -45,7 +45,7 @@ public class Bill implements Serializable{
 	private String son;
 	
 	@Column(name = "CH_ESTADO")
-	private String status;
+	private String state;
 	
 	@Column(name = "DT_FECHA_CANCELADO")
 	private Date canceledDate;
@@ -127,12 +127,12 @@ public class Bill implements Serializable{
 		this.son = son;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getState() {
+		return state;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public Date getCanceledDate() {

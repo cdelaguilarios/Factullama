@@ -20,6 +20,7 @@ public class ManageBillLogic {
 	}
 	
 	public void addBill(Bill bill){
+		bill.setState("1");
 		billRepository.addOrUpdateBill(bill);
 	}
 	
@@ -33,6 +34,16 @@ public class ManageBillLogic {
 	
 	public Bill getBill(Integer id){
 		return billRepository.getBill(id);
+	}
+	
+	public void delBill(Integer idBill){
+		if(idBill !=null){
+			Bill bill = getBill(idBill);
+			if(bill!=null){
+				bill.setState("0");
+				billRepository.addOrUpdateBill(bill);
+			}
+		}
 	}
 	
 }

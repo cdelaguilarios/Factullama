@@ -228,5 +228,23 @@ public class CustomerController {
 		log.info("* Controlador: Customer - Ver factura [Fin] *");
 		return m;
 	}
+	
+	
+	@RequestMapping(value="/delCustomer/{idCustomer}",method=RequestMethod.GET)
+	public String delCustomerInit(@PathVariable Integer idCustomer, ModelMap modelMap){
+		log.info("* Controlador: Customer - Eliminar customer [Inicio] *");
+		manageCustomerLogic.delCustomer(idCustomer);
+		log.info("* Controlador: Customer - Eliminar customer [Fin] *");
+		return listCustomers(modelMap);
+	}
+	
+	@RequestMapping(value="/delBill/{idBill}",method=RequestMethod.GET)
+	public String delBillInit(@PathVariable Integer idBill, ModelMap modelMap){
+		log.info("* Controlador: Customer - Eliminar customer [Inicio] *");
+		manageBillLogic.delBill(idBill);
+		log.info("* Controlador: Customer - Eliminar customer [Fin] *");
+		return listBills(modelMap);
+	}
+	
 
 }
