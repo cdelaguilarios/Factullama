@@ -7,9 +7,9 @@
 		<div id="content-header">
 			<h1>Actualizar Factura</h1>
 		</div>
-		<form method="post" action="#" th:action="@{/admin/billProcess}" th:object="${bill}" >
+		<form method="post" action="#" th:action="@{/admin/updBill}" th:object="${bill}" >
+		<input type="hidden" th:field="*{id}" />
 		<input type="hidden" th:field="*{idCustomer}" />
-		<input type="hidden" th:field="*{idCurrency}" />
 		<div class="row">
 			<div class="col-12">
 				<div class="widget-box">
@@ -17,8 +17,7 @@
 						<span class="icon">
 							<i class="glyphicon glyphicon-th-list"></i>									
 						</span>
-						<h5>Factura # <span th:text="${bill.number}">00099999</span></h5>
-						<input type="hidden" th:field="*{number}" />
+						<h5>Factura # </h5>
 						<input type="hidden" th:field="*{idCurrency}" />
 						<div class="buttons">
 							<a title="Atras" class="btn" href="javascript:history.go(-1)"><i class="glyphicon glyphicon-arrow-left"></i> <span class="text">Atrás</span></a>
@@ -28,31 +27,48 @@
 						<div class="invoice-content">
 							<div class="invoice-head">
 								<div class="invoice-meta">
-									<span th:text="${bill.customer.name}">Inversiones Electrocan S.A.C</span>   /  <span class="invoice-number" th:text="${bill.customer.ruc}">RUC. 96558222331 </span>
+									<span th:text="${customer.name}">Inversiones Electrocan S.A.C</span>   /  <span class="invoice-number" th:text="${customer.ruc}">RUC. 96558222331 </span>
 								</div>
 								<div class="invoice-from">
 									<ul>
 										<li>
 										<span>
 											<strong>Fecha de Emisión:</strong>
-											<span th:text="${#dates.format(new java.util.Date(), 'dd-MMM-yyyy')}">2012-07-15</span>
+											<span th:text="${#dates.format(new java.util.Date(), 'dd-MMM-yyyy')}"></span>
 										</span>
-										<input type="hidden" th:field="*{issueDate}" th:value="${new java.util.Date()}"/>
-										<span>
-											<strong>T.C :</strong>
-											<span th:text="${bill.exchangeRate}">2.80</span>
-										</span>
-										<input type="hidden" th:field="*{exchangeRate}" th:value="${bill.exchangeRate}" />
-										<span>
-											<strong>Guia de Remisión :</strong>
-											<span th:text="${bill.referralGuide}">77343-2342</span>
-										</span>
-										<input type="hidden" th:field="*{referralGuide}" th:value="${bill.referralGuide}" />
-										<span>
-											<strong>Condiciones :</strong>
-											<span th:text="${bill.conditions}">2 Meses</span>
-										</span>
-										<input type="hidden" th:field="*{conditions}" th:value="${bill.conditions}" />
+										<input type="hidden" th:field="*{issueDateCad}" th:value="${new java.util.Date()}"/>
+										
+										<div class="form-group" th:class="${#fields.hasErrors('number')}? 'form-group has-error' : 'form-group'">			                               
+			                               <div class="controls">
+			                               		<span>Numero:</span>
+			                                   <input type="text" class="form-control input-small" name="number" id="number" th:field="*{number}" /><br/>
+			                                   <span class="help-inline" for="number" th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></span>
+			                               </div>
+			                           </div>
+										
+										<div class="form-group" th:class="${#fields.hasErrors('exchangeRate')}? 'form-group has-error' : 'form-group'">			                               
+			                               <div class="controls">
+			                               		<span>T.C:</span>
+			                                   <input type="text" class="form-control input-small" name="exchangeRate" id="exchangeRate" th:field="*{exchangeRate}" /><br/>
+			                                   <span class="help-inline" for="exchangeRate" th:if="${#fields.hasErrors('exchangeRate')}" th:errors="*{exchangeRate}">2.80</span>
+			                               </div>
+			                           </div>
+			                           
+			                           <div class="form-group" th:class="${#fields.hasErrors('referralGuide')}? 'form-group has-error' : 'form-group'">			                               
+			                               <div class="controls">
+			                               		<span>Guia de Remisión :</span>
+			                                   <input type="text" class="form-control input-small" name="referralGuide" id="referralGuide" th:field="*{referralGuide}" /><br/>
+			                                   <span class="help-inline" for="referralGuide" th:if="${#fields.hasErrors('referralGuide')}" th:errors="*{referralGuide}">77343-2342</span>
+			                               </div>
+			                           </div>
+			                           
+			                           <div class="form-group" th:class="${#fields.hasErrors('conditions')}? 'form-group has-error' : 'form-group'">			                               
+			                               <div class="controls">
+			                               		<span>Condiciones :</span>
+			                                   <input type="text" class="form-control input-small" name="conditions" id="conditions" th:field="*{conditions}" /><br/>
+			                                   <span class="help-inline" for="conditions" th:if="${#fields.hasErrors('conditions')}" th:errors="*{conditions}">2 Meses</span>
+			                               </div>
+			                           </div>
 										</li>
 									</ul>
 									<br/>
@@ -85,7 +101,7 @@
 								<tfoot>
 									<tr>
 										<th class="total-label" colspan="4">
-											 Subtotal <span th:text="${' (' + bill.currency.symbol + ') '}">(S/.)</span> :
+											 Subtotal <span th:text="${' (' + currency.symbol + ') '}">(S/.)</span> :
 										</th>
 										<th class="total-amount" th:text="${bill.subtotal}">
 											 920.00
@@ -93,7 +109,7 @@
 									</tr>
 									<tr>
 										<th class="total-label" colspan="4">
-											 IGV <span th:text="${' (' + bill.currency.symbol + ') '}">(S/.)</span> :
+											 IGV <span th:text="${' (' + currency.symbol + ') '}">(S/.)</span> :
 										</th>
 										<th class="total-amount" th:text="${bill.igv}">
 											 920.00
@@ -101,7 +117,7 @@
 									</tr>
 									<tr>
 										<th class="total-label" colspan="4">
-											 Total <span th:text="${' (' + bill.currency.symbol + ') '}">(S/.)</span> :
+											 Total <span th:text="${' (' + currency.symbol + ') '}">(S/.)</span> :
 										</th>
 										<th class="total-amount" th:text="${bill.total}">
 											 920.00
@@ -109,7 +125,8 @@
 									</tr>
 								</tfoot>
 								<tbody>
-								<tr th:each="detail,detailStat : *{details}">
+								<tr th:each="detail,detailStat : *{details}">			
+									<input type="hidden" th:field="*{details[__${detailStat.index}__].id}" />	
 									<td th:text="${detailStat.count}">1</td>
 									<input type="hidden" th:field="*{details[__${detailStat.index}__].number}" th:value="${detailStat.count}" />
 									<td>

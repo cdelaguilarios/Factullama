@@ -12,7 +12,7 @@ public class BillDetailBean implements Serializable{
 	private static final long serialVersionUID = -4043270582493595347L;
 	
 	
-	private int id;
+	private Integer id;
 	private int number;
 	private String description;
 	private int quantity;
@@ -22,10 +22,10 @@ public class BillDetailBean implements Serializable{
 	private int idBill;
 	
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public int getNumber() {

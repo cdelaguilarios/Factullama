@@ -1,6 +1,8 @@
 package com.llamita.factullamita.view;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +28,8 @@ public class BillBean implements Serializable{
 	private String conditions;
 	private String exchangeRate;
 	private String son;
-	private Date issueDate;  
+	private Date issueDate;
+	private String issueDateCad;
 	private Integer idCurrency;
 	private String subtotal;
 	private String igv;
@@ -36,14 +39,17 @@ public class BillBean implements Serializable{
 	private CustomerBean customer;
 	private CurrencyBean currency;
 	
-	@NotNull
+	@NotNull(message="Es nulo el id customer")
 	private Integer idCustomer;
 	
-	@NotNull
+	@NotNull(message="Es nulo el numero")
 	@Size(min=1,max=20,message="El número de la factura debe ser colocado.")
 	@Pattern(regexp="^[0-9]*$",message="El número de la factura debe contener sólo números.")
 	private String number;
 
+	public BillBean(){
+	}
+	
 	public Integer getIdCustomer() {
 		return idCustomer;
 	}
@@ -135,12 +141,29 @@ public class BillBean implements Serializable{
 		this.currency = currency;
 	}
 	
+	
 	/*
 	 * Operaciones de calculo automatico
 	 * 
 	 * */
 	
 	
+	public String getIssueDateCad() {
+		return issueDateCad;
+	}
+
+	public void setIssueDateCad(String issueDateCad) {
+		Date issueDte = null;
+		try {
+			issueDte = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(issueDateCad);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.issueDate = issueDte;
+		this.issueDateCad = issueDateCad;
+	}
+
 	public double calculateSubTotal(){
 		double subTotal = 0;
 		if(details!=null && details.size()>0){
