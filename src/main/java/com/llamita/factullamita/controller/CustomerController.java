@@ -268,7 +268,7 @@ public class CustomerController {
 		return "/bill/updBill";
 	}
 	
-	@RequestMapping(value="/updBill",method=RequestMethod.POST)
+	@RequestMapping(value="/updBill",params={"save"})
 	public String updBill(@Valid @ModelAttribute(value="bill") BillBean bill,final BindingResult bindingResult, final ModelMap modelMap ){
 		log.info("* Controlador: Bill - Actualizar factura [Inicio] *");
 		bill.setCustomer(Caster.customerModelToBean(manageCustomerLogic.getCustomer(bill.getIdCustomer())));
