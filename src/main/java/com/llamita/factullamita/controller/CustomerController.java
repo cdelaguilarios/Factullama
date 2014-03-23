@@ -1,5 +1,7 @@
 package com.llamita.factullamita.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,12 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.llamita.factullamita.logic.ManageBillDetailLogic;
 import com.llamita.factullamita.logic.ManageBillLogic;
 import com.llamita.factullamita.logic.ManageCurrencyLogic;
 import com.llamita.factullamita.logic.ManageCustomerLogic;
@@ -26,6 +30,7 @@ import com.llamita.factullamita.model.Customer;
 import com.llamita.factullamita.util.Caster;
 import com.llamita.factullamita.view.BillBean;
 import com.llamita.factullamita.view.BillDetailBean;
+import com.llamita.factullamita.view.CurrencyBean;
 import com.llamita.factullamita.view.CustomerBean;
 
 @Controller
@@ -42,6 +47,9 @@ public class CustomerController {
 	
 	@Autowired
 	private ManageBillLogic manageBillLogic;
+	
+	@Autowired
+	private ManageBillDetailLogic manageBillDetailLogic;
 	
 	@ModelAttribute("allCurrencies")
 	public List<Currency> listCurrencies(){
@@ -249,10 +257,43 @@ public class CustomerController {
 	
 	@RequestMapping(value="/updBill/{idBill}",method=RequestMethod.GET)
 	public String updBillInit(@PathVariable Integer idBill, ModelMap modelMap){
-		log.info("* Controlador: Customer - Actualizar bill [Inicio] *");
+		log.info("* Controlador: Bill - Actualizar factura [Inicio] *");
+		BillBean bill = Caster.billModelToBean(manageBillLogic.getBill(idBill));
+		bill.setCustomer(Caster.customerModelToBean(manageCustomerLogic.getCustomer(bill.getIdCustomer())));
+		bill.setCurrency(Caster.currencyModelToBean(manageCurrencyLogic.getCurrency(bill.getIdCurrency())));
+		modelMap.addAttribute("bill",bill);
+		modelMap.addAttribute("currency",bill.getCurrency());
+		modelMap.addAttribute("customer",bill.getCustomer());
+		log.info("* Controlador: Bill - Actualizar factura [Fin] *");
+		return "/bill/updBill";
+	}
+	
+	@RequestMapping(value="/updBill",params={"save"})
+	public String updBill(@Valid @ModelAttribute(value="bill") BillBean bill,final BindingResult bindingResult, final ModelMap modelMap ){
+		log.info("* Controlador: Bill - Actualizar factura [Inicio] *");
+		bill.setCustomer(Caster.customerModelToBean(manageCustomerLogic.getCustomer(bill.getIdCustomer())));
+		bill.setCurrency(Caster.currencyModelToBean(manageCurrencyLogic.getCurrency(bill.getIdCurrency())));
+		modelMap.addAttribute("bill",bill);
+		modelMap.addAttribute("customer",bill.getCustomer());
+		modelMap.addAttribute("currency",bill.getCurrency());
 		
-		log.info("* Controlador: Customer - Actualizar bill [Fin] *");
-		return listBills(modelMap);
+		if(bindingResult.hasErrors()){			
+			log.info("El total de errores es: " + bindingResult.getFieldErrorCount());
+			for(FieldError error : bindingResult.getFieldErrors()) {
+				log.info("Campo: " + error.getField() + "Mensaje: " + error.getDefaultMessage());
+			}
+			return "/bill/updBill";
+		}	
+		
+		manageBillLogic.updBill(Caster.billBeanToModel(bill));
+		for (BillDetailBean detail : bill.getDetails()) {
+			detail.setIdBill(bill.getId());
+			manageBillLogic.addBillDetail(Caster.billDetailBeanToModel(detail));
+		}	
+		modelMap.clear();
+		log.info("* Controlador: Bill - Actualizar factura [Fin] *");
+		return "redirect:/admin/updBill/"+bill.getId();	
+        
 	}
 
 }

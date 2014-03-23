@@ -7,9 +7,6 @@ import javax.validation.constraints.Size;
 
 public class CustomerBean implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2458402754973069055L;
 
 	private int id;

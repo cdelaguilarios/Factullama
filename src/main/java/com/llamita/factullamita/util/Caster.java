@@ -1,5 +1,6 @@
 package com.llamita.factullamita.util;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,6 +68,8 @@ public class Caster {
 	public static BillDetail billDetailBeanToModel(BillDetailBean bean){
 		log.info("* Convertir BillDetail Bean -> Modelo [Inicio] *");
 		BillDetail model = new BillDetail();
+		if(bean.getId() != null)
+			model.setId(bean.getId());	
 		model.setNumber(bean.getNumber());
 		model.setQuantity(bean.getQuantity());
 		model.setUnitPrice(bean.getUnitPrice());
@@ -76,6 +79,8 @@ public class Caster {
 		log.info("* Convertir BillDetail Bean -> Modelo [Fin] *");
 		return model;
 	}
+	
+	
 	
 	public static BillDetailBean billDetailModelToBean(BillDetail model){
 		log.info("* Convertir BillDetail Modelo -> Bean [Inicio] *");
@@ -105,6 +110,8 @@ public class Caster {
 	public static Bill billBeanToModel(BillBean bean){
 		log.info("* Convertir Bill Bean -> Modelo [Inicio] *");
 		Bill bill = new Bill();
+		if(bean.getId() != null)
+			bill.setId(bean.getId());		
 		bill.setReferralGuide(bean.getReferralGuide());
 		bill.setConditions(bean.getConditions());
 		bill.setExchangeRate(bean.getExchangeRate());
@@ -135,7 +142,6 @@ public class Caster {
 		bill.setSon(model.getSon());
 		bill.setSubtotal(model.getSubtotal());
 		bill.setTotal(model.getTotal());
-		
 		List<BillDetailBean> list = new ArrayList<BillDetailBean>();
 		
 		for(BillDetail detail: model.getDetails()){

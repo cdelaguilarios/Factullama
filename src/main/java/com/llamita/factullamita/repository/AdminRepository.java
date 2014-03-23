@@ -17,7 +17,6 @@ public class AdminRepository {
     private SessionFactory sessionFactory;
 
     public Administrator getAdminByUser(String user) {
-
         Session session = sessionFactory.getCurrentSession();
 
         Query query = session.createQuery("from Administrator a where a.user = :user");
@@ -25,5 +24,11 @@ public class AdminRepository {
         Administrator admin = (Administrator) query.uniqueResult();
 
         return admin;
+    }
+
+    public void updateAdministrator(Administrator administrator) {
+        Session session = sessionFactory.getCurrentSession();
+
+        session.saveOrUpdate(administrator);
     }
 }
