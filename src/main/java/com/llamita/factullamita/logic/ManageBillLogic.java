@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.llamita.factullamita.model.Bill;
 import com.llamita.factullamita.model.BillDetail;
+import com.llamita.factullamita.model.Customer;
 import com.llamita.factullamita.repository.BillRepository;
 
 import javax.xml.bind.DatatypeConverter;
@@ -51,6 +52,11 @@ public class ManageBillLogic {
 	
 	public void addBillDetail(BillDetail detail){
 		billRepository.addOrUpdateBillDetail(detail);
+	}
+	
+	public void updBill(Bill bill){
+		bill.setState("1");
+		billRepository.addOrUpdateBill(bill);
 	}
 	
 	public Bill getBillByNumber(String number){
