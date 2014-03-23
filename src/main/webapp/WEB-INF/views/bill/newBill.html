@@ -3,7 +3,9 @@
 	layout:decorator="layouts/base">
 	
 	<div layout:fragment="content">
-	
+		
+		<script src="../../js/bill.js" th:src="@{/js/bill.js}"></script>
+		
 		<div id="content-header">
 			<h1>Nueva Factura</h1>
 		</div>
@@ -75,8 +77,8 @@
 								<thead>
 									<tr>
 										<th style="width: 2%;"></th>
-										<th style="width: 10%;">Cantidad</th>
-										<th style="width: 50%;">Descripcion</th>
+										<th style="width: 5%;">Cantidad</th>
+										<th style="width: 55%;">Descripcion</th>
 										<th style="width: 10%;">P. Unitario</th>
 										<th style="width: 10%;">Importe</th>
 										<th style="width: 1%;">Opciones</th>
@@ -87,7 +89,7 @@
 										<th class="total-label" colspan="4">
 											 Subtotal <span th:text="${' (' + bill.currency.symbol + ') '}">(S/.)</span> :
 										</th>
-										<th class="total-amount" th:text="${bill.subtotal}">
+										<th id="subtotal" class="total-amount" th:text="${bill.subtotal}">
 											 920.00
 										</th>
 									</tr>
@@ -95,7 +97,7 @@
 										<th class="total-label" colspan="4">
 											 IGV <span th:text="${' (' + bill.currency.symbol + ') '}">(S/.)</span> :
 										</th>
-										<th class="total-amount" th:text="${bill.igv}">
+										<th id="igv" class="total-amount" th:text="${bill.igv}">
 											 920.00
 										</th>
 									</tr>
@@ -103,23 +105,23 @@
 										<th class="total-label" colspan="4">
 											 Total <span th:text="${' (' + bill.currency.symbol + ') '}">(S/.)</span> :
 										</th>
-										<th class="total-amount" th:text="${bill.total}">
+										<th id="total" class="total-amount" th:text="${bill.total}">
 											 920.00
 										</th>
 									</tr>
 								</tfoot>
-								<tbody>
+								<tbody id="tbody-content">
 								<tr th:each="detail,detailStat : *{details}">
 									<td th:text="${detailStat.count}">1</td>
 									<input type="hidden" th:field="*{details[__${detailStat.index}__].number}" th:value="${detailStat.count}" />
 									<td>
-										<input type="text" th:field="*{details[__${detailStat.index}__].quantity}" th:errorclass="fieldError" style="width: 100%;" />
+										<input type="text" th:field="*{details[__${detailStat.index}__].quantity}" th:errorclass="fieldError" style="width: 100%;" class="text-center quantity"/>
 									</td>
 									<td>
 										<input type="text" th:field="*{details[__${detailStat.index}__].description}" th:errorclass="fieldError" style="width: 100%;" />
 									</td>
 									<td>
-										<input type="text" th:field="*{details[__${detailStat.index}__].unitPrice}" th:errorclass="fieldError"  style="width: 100%;"/>
+										<input type="text" th:field="*{details[__${detailStat.index}__].unitPrice}" th:errorclass="fieldError"  style="width: 100%;" class="text-right unitPrice"/>
 									</td>
 									<td class="text-right" style="width: 10%;" th:text="${detail.amount}">
 										$ 0.00
