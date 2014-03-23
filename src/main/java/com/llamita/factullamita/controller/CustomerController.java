@@ -185,13 +185,15 @@ public class CustomerController {
     public String saveBill(@ModelAttribute(value="bill") final BillBean bill, final BindingResult bindingResult, ModelMap modelMap) {
 		log.info("* Controlador: Customer - Guardar factura [Inicio] *");
 		if(bill!=null){
-			System.out.println("* Guardar Cabecera *");
+			log.debug("* Guardar Cabecera *");
 			//Guardar Cabecera
-			manageBillLogic.addBill(Caster.billBeanToModel(bill));
+			Bill billModel = Caster.billBeanToModel(bill);
+			manageBillLogic.addBill(billModel);
+			log.debug("* IdBill: "+billModel.getId());
 			//GuardarDetalle
-			System.out.println("* Guardar Detalle *");
+			log.debug("* Guardar Detalle *");
 			for(BillDetailBean detail:bill.getDetails()){
-				detail.setIdBill(manageBillLogic.getBillByNumber(bill.getNumber()).getId());
+				detail.setIdBill(billModel.getId());
 				manageBillLogic.addBillDetail(Caster.billDetailBeanToModel(detail));
 			}
 			
@@ -229,7 +231,6 @@ public class CustomerController {
 		return m;
 	}
 	
-	
 	@RequestMapping(value="/delCustomer/{idCustomer}",method=RequestMethod.GET)
 	public String delCustomerInit(@PathVariable Integer idCustomer, ModelMap modelMap){
 		log.info("* Controlador: Customer - Eliminar customer [Inicio] *");
@@ -240,11 +241,18 @@ public class CustomerController {
 	
 	@RequestMapping(value="/delBill/{idBill}",method=RequestMethod.GET)
 	public String delBillInit(@PathVariable Integer idBill, ModelMap modelMap){
-		log.info("* Controlador: Customer - Eliminar customer [Inicio] *");
+		log.info("* Controlador: Customer - Eliminar bill [Inicio] *");
 		manageBillLogic.delBill(idBill);
-		log.info("* Controlador: Customer - Eliminar customer [Fin] *");
+		log.info("* Controlador: Customer - Eliminar bill [Fin] *");
 		return listBills(modelMap);
 	}
 	
+	@RequestMapping(value="/updBill/{idBill}",method=RequestMethod.GET)
+	public String updBillInit(@PathVariable Integer idBill, ModelMap modelMap){
+		log.info("* Controlador: Customer - Actualizar bill [Inicio] *");
+		
+		log.info("* Controlador: Customer - Actualizar bill [Fin] *");
+		return listBills(modelMap);
+	}
 
 }
