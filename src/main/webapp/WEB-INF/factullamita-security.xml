@@ -19,6 +19,8 @@
     </security:http>
 
     <security:authentication-manager>
-        <security:authentication-provider user-service-ref="adminDetailsService" />
+        <security:authentication-provider user-service-ref="adminDetailsService">
+            <security:password-encoder hash="sha" />
+        </security:authentication-provider>
     </security:authentication-manager>
 </beans>

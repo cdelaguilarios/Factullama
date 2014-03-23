@@ -40,8 +40,8 @@ public class BillBean implements Serializable{
 	private Integer idCustomer;
 	
 	@NotNull
-	@Size(min=1,max=20)
-	@Pattern(regexp="^[0-9]*$")
+	@Size(min=1,max=20,message="El número de la factura debe ser colocado.")
+	@Pattern(regexp="^[0-9]*$",message="El número de la factura debe contener sólo números.")
 	private String number;
 
 	public Integer getIdCustomer() {

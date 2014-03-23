@@ -26,25 +26,25 @@
                                <label class="control-label">Nombre</label>
                                <div class="controls">
                                    <input type="text" class="form-control input-small" name="name" id="name" th:field="*{name}" /><br/>
-                                   <span class="help-inline" for="name" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect Razon Social</span>
+                                   <span class="help-inline" for="name" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrecta Razon Social</span>
                                </div>
                            </div>
                            <div class="form-group" th:class="${#fields.hasErrors('ruc')}? 'form-group has-error' : 'form-group'">
                                <label class="control-label">RUC</label>
                                <div class="controls">
                                    <input type="text" class="form-control input-small" name="ruc" id="ruc" th:field="*{ruc}" /><br/>
-                                   <span class="help-inline" for="razonSocial" th:if="${#fields.hasErrors('ruc')}" th:errors="*{ruc}">Incorrect RUC</span>
+                                   <span class="help-inline" for="razonSocial" th:if="${#fields.hasErrors('ruc')}" th:errors="*{ruc}">Incorrecta RUC</span>
                                </div>
                            </div>
                            <div class="form-group" th:class="${#fields.hasErrors('address')}? 'form-group has-error' : 'form-group'">
-                               <label class="control-label">Direcci�n</label>
+                               <label class="control-label">Dirección</label>
                                <div class="controls">
                                    <input type="text" class="form-control input-small" name="address" id="address" th:field="*{address}"/><br/>
-                                   <span class="help-inline" for="address" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Incorrect Direccion</span>
+                                   <span class="help-inline" for="address" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Incorrecta Dirección</span>
                                </div>
                            </div>
                            <div class="form-actions">
-                               <button type="submit" class="btn btn-small btn-success"><i class="glyphicon glyphicon-ok-sign"></i>  <span class="text">Guardar</span></button>
+                           		<button type="submit" class="btn btn-small btn-success"><i class="glyphicon glyphicon-ok-sign"></i>  <span class="text">Guardar</span></button>                      
                            </div>
                        </form>
 					</div>

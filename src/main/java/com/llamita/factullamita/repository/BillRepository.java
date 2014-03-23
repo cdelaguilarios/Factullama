@@ -17,6 +17,7 @@ public class BillRepository extends HibernateRepository{
 
 	public List<Bill> listBill(){
 		Criteria criteria = getSession().createCriteria(Bill.class);
+		criteria.add(Restrictions.eq("state", "1"));
 		return criteria.list();
 	}
 	
@@ -40,7 +41,6 @@ public class BillRepository extends HibernateRepository{
 		try{
 			System.out.println("Guardando bill ....");
 			tx = (Transaction) getSession().beginTransaction();
-			bill.setStatus("1");
 			getSession().saveOrUpdate(bill);
 			tx.commit();
 		}catch(Exception e){

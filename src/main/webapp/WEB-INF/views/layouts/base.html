@@ -36,24 +36,33 @@
 	<body>
 		<div id="header">
 			<h1><a href="index"></a></h1>	
-			<a id="menu-trigger" href="#"><i class="glyphicon glyphicon-align-justify"></i></a>	
+			<a id="menu-trigger" href="#">
+                <i class="glyphicon glyphicon-align-justify"></i>
+            </a>
 		</div>
 		<div id="user-nav">
             <ul class="btn-group">
-                <li class="btn" ><a title="" href="#"><i class="glyphicon glyphicon-user"></i> <span class="text">Perfil</span></a></li>
-                <li class="btn"><a title="" th:href="@{/logout}" href="login.html"><i class="glyphicon glyphicon-share-alt"></i> <span class="text">Cerrar Sesion</span></a></li>
+                <li class="btn">
+                    <a title="" th:href="@{/admin/cambiar-pwd}">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span class="text">Perfil</span>
+                    </a>
+                </li>
+                <li class="btn">
+                    <a title="" th:href="@{/logout}" href="login.html">
+                        <i class="glyphicon glyphicon-share-alt"></i>
+                        <span class="text">Cerrar Sesion</span>
+                    </a>
+                </li>
             </ul>
         </div>
-            
 		<div id="sidebar">
-			<!--<a href="#" class="hide"><i class="glyphicon glyphicon-home"></i> Dashboard</a>-->
 			<ul>
-				<li><a href="#" th:href="@{/admin/index}"><i class="glyphicon glyphicon-home"></i><span>General</span></a></li>	
-				<li><a href="#" th:href="@{/admin/customer}"><i class="fa fa-users fa-lg"></i> <span>Clientes</span></a></li>		
-				<li><a href="#" th:href="@{/admin/bill}"><i class="fa fa-dollar fa-lg"></i> <span>Facturas</span></a></li>	
-			</ul>		
+				<li><a href="#" th:href="@{/admin/index}"><i class="glyphicon glyphicon-home"></i><span>General</span></a></li>
+				<li><a href="#" th:href="@{/admin/customer}"><i class="fa fa-users fa-lg"></i> <span>Clientes</span></a></li>
+				<li><a href="#" th:href="@{/admin/bill}"><i class="fa fa-dollar fa-lg"></i> <span>Facturas</span></a></li>
+			</ul>
 		</div>
-		
 		<div id="content">
 			<div layout:fragment="content"></div>
 		</div>
@@ -62,7 +71,5 @@
 				2010 - 2014 &copy; Como la llamita.
 			</div>
 		</div>
-			
-            
 	</body>
 </html>

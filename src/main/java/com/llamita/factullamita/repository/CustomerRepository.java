@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,7 @@ public class CustomerRepository extends HibernateRepository{
 
 	public List<Customer> listCustomer(){
 		Criteria criteria = getSession().createCriteria(Customer.class);
+		criteria.add(Restrictions.eq("state", "1"));
 		return criteria.list();
 	}
 	
@@ -22,8 +24,6 @@ public class CustomerRepository extends HibernateRepository{
 		Transaction tx = null;
 		try{
 			tx = (Transaction) getSession().beginTransaction();
-			//Agregar estado por defecto
-			customer.setState("1");
 			getSession().saveOrUpdate(customer);
 			tx.commit();
 		}catch(Exception e){
