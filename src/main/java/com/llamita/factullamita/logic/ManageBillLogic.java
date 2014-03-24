@@ -31,7 +31,8 @@ public class ManageBillLogic {
             byte[] decodeTotal    = Base64.decodeBase64(bill.getTotal().getBytes());
 
             bill.setSubtotal(new String(decodeSubTotal));
-            bill.setTotal(new String(decodeTotal));
+            bill.setTotal(new String(decodeTotal));           
+           
             listBillDecoded.add(bill);
         }
 
@@ -51,11 +52,23 @@ public class ManageBillLogic {
 	}
 	
 	public void addBillDetail(BillDetail detail){
+        byte[] encodeUnitPrice    = Base64.encodeBase64(detail.getUnitPrice().getBytes());
+		byte[] encodeAmount = Base64.encodeBase64(detail.getAmount().getBytes());
+
+		detail.setUnitPrice(new String(encodeUnitPrice));
+		detail.setAmount(new String(encodeAmount));
+		
 		billRepository.addOrUpdateBillDetail(detail);
 	}
 	
 	public void updBill(Bill bill){
+		byte[] encodeSubTotal = Base64.encodeBase64(bill.getSubtotal().getBytes());
+        byte[] encodeTotal    = Base64.encodeBase64(bill.getTotal().getBytes());
+        
 		bill.setState("1");
+        bill.setSubtotal(new String(encodeSubTotal));
+        bill.setTotal(new String(encodeTotal));
+        
 		billRepository.addOrUpdateBill(bill);
 	}
 	
@@ -64,7 +77,15 @@ public class ManageBillLogic {
 	}
 	
 	public Bill getBill(Integer id){
-		return billRepository.getBill(id);
+		Bill bill = billRepository.getBill(id);
+         for(BillDetail detail : bill.getDetails()){
+         	byte[] decodeUnitPrice    = Base64.decodeBase64(detail.getUnitPrice().getBytes());
+     		byte[] decodeAmount = Base64.decodeBase64(detail.getAmount().getBytes());
+     		
+     		detail.setUnitPrice(new String(decodeUnitPrice));
+     		detail.setAmount(new String(decodeAmount));    
+         }            
+		return bill;
 	}
 	
 	public void delBill(Integer idBill){

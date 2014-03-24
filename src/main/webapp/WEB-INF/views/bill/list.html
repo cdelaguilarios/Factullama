@@ -26,21 +26,21 @@
 						<table id="tableFilter" class="table table-bordered table-striped table-hover">
 							<thead>
 								<tr>
-									<th>N�mero</th>
-									<th>Fecha de Emisi�n</th>
-									<th>Guia de Remisi�n</th>
+									<th>N&uacute;mero</th>
+									<th>Fecha de Emisi&oacute;n</th>
+									<th>Guia de Remisi&oacute;n</th>
 									<th>Total</th>
-									<th>Operaci�n</th>
+									<th>Operaci&oacute;n</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="bill : ${bills}">
-									<td th:text="${bill.number}" class="text-center">1111111</td>
-									<td th:text="${bill.issueDate}">12-06-14</td>
-									<td th:text="${bill.referralGuide}">23323-2323</td>
-									<td th:text="${bill.total}" class="text-right" >400.00</td>
+									<td th:text="${bill.number}" class="text-center"></td>
+									<td th:text="${bill.issueDate}"></td>
+									<td th:text="${bill.referralGuide}"></td>
+									<td th:text="${bill.total}" class="text-right" ></td>
 									<td>
-										<a href="#" class="btn btn-primary btn-small" th:href="@{|/admin/viewBill/${bill.id}|}" target="_blank"><i class="glyphicon glyphicon-eye-open"></i>     Ver</a>
+										<a href="#" class="btn btn-primary btn-small" th:href="@{|/admin/viewBill/${bill.id}|}" target="_blank"><i class="glyphicon glyphicon-print"></i>     Imprimir</a>
 										<a href="#" class="btn btn-primary btn-small" th:href="@{|/admin/updBill/${bill.id}|}"><i class="glyphicon glyphicon-pencil"></i>     Editar</a>
 										<a href="#" class="btn btn-primary btn-small" th:href="@{|/admin/delBill/${bill.id}|}"><i class="glyphicon glyphicon-trash"></i>     Eliminar</a>
 									</td>

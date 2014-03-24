@@ -1,12 +1,10 @@
 package com.llamita.factullamita.util;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.llamita.factullamita.controller.BillController;
 import com.llamita.factullamita.model.Bill;
 import com.llamita.factullamita.model.BillDetail;
 import com.llamita.factullamita.model.Currency;

@@ -99,6 +99,4 @@ public class BillDetail implements Serializable{
 	public void setIdBill(int idBill) {
 		this.idBill = idBill;
 	}
-
-	
 }

@@ -28,15 +28,15 @@
 								<tr>
 									<th>Nombre</th>
 									<th>RUC</th>
-									<th>Dirección</th>
-									<th>Operación</th>
+									<th>Direcci&oacute;n</th>
+									<th>Operaci&oacute;n</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="customer : ${customers}">
-									<td th:text="${customer.name}">Cliente X</td>
-									<td th:text="${customer.ruc}">9999999999</td>
-									<td th:text="${customer.address}">La Victoria</td>
+									<td th:text="${customer.name}"></td>
+									<td th:text="${customer.ruc}"></td>
+									<td th:text="${customer.address}"></td>
 									<td>
 										<a href="#" class="btn btn-primary btn-small" th:href="@{|/admin/updCustomer/${customer.id}|}"><i class="glyphicon glyphicon-pencil"></i> Actualizar</a>
 										<a href="#" class="btn btn-primary btn-small" th:href="@{|/admin/addBill/${customer.id}|}"><i class="glyphicon glyphicon-plus-sign"></i> Facturar</a>

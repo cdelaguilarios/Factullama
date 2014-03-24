@@ -15,4 +15,13 @@ public class ManageBillDetailLogic {
 	public BillDetail getBillDetail(Integer id){
 		return billDetailRepository.getBillDetail(id);
 	}
+	
+	public void delBillDetail(Integer idBillDetail){
+		if(idBillDetail !=null){
+			BillDetail billDetail = getBillDetail(idBillDetail);
+			if(billDetail!=null){
+				billDetailRepository.deleteBillDetail(billDetail);
+			}
+		}
+	}
 }

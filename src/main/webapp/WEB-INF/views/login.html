@@ -16,7 +16,7 @@
         </div>
         <div id="loginbox">
             <form id="loginform" action="#" th:action="@{/login/authenticate}" method="post">
-                <p>Ingrese su usuario y/o contraseña</p>
+                <p>Ingrese su usuario y/o contrase&ntilde;a</p>
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="glyphicon glyphicon-user"></i>
@@ -32,7 +32,7 @@
                 <div class="form-actions">
                     <div th:if="${error} == true">
                         <div class="pull-left">
-                            <strong style="color:#843534">Usuario y/o contraseña incorrectas</strong>
+                            <strong style="color:#843534">Usuario y/o contrase&ntilde;a incorrectas</strong>
                         </div>
                     </div>
                     <div class="pull-right">
