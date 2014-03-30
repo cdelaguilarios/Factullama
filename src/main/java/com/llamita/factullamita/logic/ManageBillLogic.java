@@ -55,16 +55,39 @@ public class ManageBillLogic {
 	}
 	
 	public void updBill(Bill bill){
+
+        byte[] encodeSubTotal = Base64.encodeBase64(bill.getSubtotal().getBytes());
+        byte[] encodeTotal    = Base64.encodeBase64(bill.getTotal().getBytes());
+
 		bill.setState("1");
+        bill.setSubtotal(new String(encodeSubTotal));
+        bill.setTotal(new String(encodeTotal));
+
 		billRepository.addOrUpdateBill(bill);
 	}
 	
 	public Bill getBillByNumber(String number){
-		return billRepository.getBillByField("number", number);
+		Bill bill = billRepository.getBillByField("number", number);
+
+        byte[] decodeSubTotal = Base64.decodeBase64(bill.getSubtotal().getBytes());
+        byte[] decodeTotal    = Base64.decodeBase64(bill.getTotal().getBytes());
+
+        bill.setSubtotal(new String(decodeSubTotal));
+        bill.setTotal(new String(decodeTotal));
+
+        return bill;
 	}
 	
 	public Bill getBill(Integer id){
-		return billRepository.getBill(id);
+        Bill bill = billRepository.getBill(id);
+
+        byte[] decodeSubTotal = Base64.decodeBase64(bill.getSubtotal().getBytes());
+        byte[] decodeTotal    = Base64.decodeBase64(bill.getTotal().getBytes());
+
+        bill.setSubtotal(new String(decodeSubTotal));
+        bill.setTotal(new String(decodeTotal));
+
+		return bill;
 	}
 	
 	public void delBill(Integer idBill){
