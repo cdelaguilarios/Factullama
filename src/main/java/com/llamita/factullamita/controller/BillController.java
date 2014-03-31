@@ -31,7 +31,7 @@ import com.llamita.factullamita.view.BillDetailBean;
 
 @Controller
 @RequestMapping(value="/admin")
-public class BillController {
+public class BillController {  
 	
 	private Logger log = Logger.getLogger(BillController.class);
 	
@@ -59,10 +59,10 @@ public class BillController {
 	public String listBills(ModelMap modelMap){
 		log.info("* Controlador: Customer - Listar facturas [Inicio] *");
 		List<Bill> bills = manageBillLogic.listBill();
-		List<BillBean> billsBeans = new ArrayList<BillBean>();
-		for(Bill bill : bills) 
-			billsBeans.add(Caster.billModelToBean(bill));		
-        modelMap.addAttribute("bills", billsBeans);
+//		List<BillBean> billsBeans = new ArrayList<BillBean>();
+//		for(Bill bill : bills) 
+//			billsBeans.add(Caster.billModelToBean(bill));		
+        modelMap.addAttribute("bills", bills);
         log.info("* Controlador: Customer - Listar facturas [Fin] *");
 		return "/bill/list";
 	}
