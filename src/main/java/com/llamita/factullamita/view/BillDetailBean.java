@@ -21,6 +21,10 @@ public class BillDetailBean implements Serializable{
 	
 	private int idBill;
 	
+
+	public BillDetailBean(){
+		unitPrice = "0.00";
+	}
 	
 	public Integer getId() {
 		return id;

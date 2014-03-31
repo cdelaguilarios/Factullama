@@ -24,14 +24,14 @@
 						<form class="form-horizontal" method="post" action="#" th:action="@{/admin/fillBillDetail}" th:object="${bill}" name="basic_validate" id="basic_validate" novalidate="novalidate">
                            <input type="hidden" th:field="*{idCustomer}" th:value="${bill.idCustomer}" />
                            <div class="form-group" th:class="${#fields.hasErrors('number')}? 'form-group has-error' : 'form-group'">
-                               <label class="control-label">Número</label>
+                               <label class="control-label">N&uacute;mero</label>
                                <div class="controls">
                                    <input type="text" class="form-control input-small" name="number" id="number" th:field="*{number}" /><br/>
                                    <span class="help-inline" for="number" th:if="${#fields.hasErrors('number')}" th:errors="*{number}">Incorrect Numero</span>
                                </div>
                            </div>
                            <div class="form-group" th:class="${#fields.hasErrors('referralGuide')}? 'form-group has-error' : 'form-group'">
-                               <label class="control-label">Guia de Remisión</label>
+                               <label class="control-label">Guia de Remisi&oacute;n</label>
                                <div class="controls">
                                    <input type="text" class="form-control input-small" name="referralGuide" id="referralGuide" th:field="*{referralGuide}" /><br/>
                                    <span class="help-inline" for="referralGuide" th:if="${#fields.hasErrors('referralGuide')}" th:errors="*{referralGuide}">Incorrect Guia de Remision</span>

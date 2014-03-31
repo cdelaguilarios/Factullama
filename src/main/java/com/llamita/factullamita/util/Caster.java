@@ -1,12 +1,10 @@
 package com.llamita.factullamita.util;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.llamita.factullamita.controller.BillController;
 import com.llamita.factullamita.model.Bill;
 import com.llamita.factullamita.model.BillDetail;
 import com.llamita.factullamita.model.Currency;
@@ -75,7 +73,6 @@ public class Caster {
 		model.setUnitPrice(bean.getUnitPrice());
 		model.setAmount(bean.getAmount());
 		model.setDescription(bean.getDescription());
-		model.setIdBill(bean.getIdBill());
 		log.info("* Convertir BillDetail Bean -> Modelo [Fin] *");
 		return model;
 	}
@@ -88,7 +85,7 @@ public class Caster {
 		bean.setId(model.getId());
 		bean.setAmount(model.getAmount());
 		bean.setDescription(model.getDescription());
-		bean.setIdBill(model.getIdBill());
+		bean.setIdBill(model.getBill().getId());
 		bean.setNumber(model.getNumber());
 		bean.setQuantity(model.getQuantity());
 		bean.setUnitPrice(model.getUnitPrice());

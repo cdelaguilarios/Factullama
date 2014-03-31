@@ -16,14 +16,14 @@
                         <div class="buttons">
                             <a class="btn btn-small" href="#" th:href="@{/admin/index}">
                                 <i class="glyphicon glyphicon-arrow-left"></i>
-                                <span class="text">Atrás</span>
+                                <span class="text">Atras</span>
                             </a>
                         </div>
                     </div>
                     <div class="widget-content nopadding">
                         <form class="form-horizontal" method="post" th:action="@{/admin/cambiar-pwd}" th:object="${admin}" novalidate="novalidate">
                             <div class="form-group" th:class="${#fields.hasErrors('password')}? 'form-group has-error' : 'form-group'">
-                                <label class="control-label">Clave</label>
+                                <label class="control-label">Nueva clave:</label>
                                 <div class="controls">
                                     <input type="password" class="form-control input-small" name="password" id="password" th:field="*{password}" /> <br/>
                                     <span class="help-inline" for="password" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Formato de clave incorrecto</span>
