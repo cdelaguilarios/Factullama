@@ -64,7 +64,10 @@ public class BillController {
             if(bill!=null){
             	bill = manageBillLogic.getBill(bill.getId());
             	log.debug("Factura: "+bill.getId()+" "+bill.getNumber()+" "+bill.getTotal());
-    			billsBeans.add(Caster.billModelToBean(bill));
+            	BillBean bean = Caster.billModelToBean(bill);
+            	bean.setCustomer(Caster.customerModelToBean(manageCustomerLogic.getCustomer(bill.getIdCustomer())));
+            	log.debug("Cliente : "+bean.getCustomer().getName());
+    			billsBeans.add(bean);
             }
         }
         modelMap.addAttribute("bills", billsBeans);

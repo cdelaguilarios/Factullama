@@ -22,9 +22,9 @@
 						<h5>Factura # <span th:text="${bill.number}">00099999</span></h5>
 						<input type="hidden" th:field="*{number}" />
 						<input type="hidden" th:field="*{idCurrency}" />
-						<div class="buttons">
+						<!-- <div class="buttons">
 							<a title="Atras" class="btn" href="javascript:history.go(-1)"><i class="glyphicon glyphicon-arrow-left"></i> <span class="text">Atras</span></a>
-						</div>
+						</div>  -->
 					</div>
 					<div class="widget-content nopadding">
 						<div class="invoice-content">
@@ -37,7 +37,7 @@
 										<li>
 										<span>
 											<strong>Fecha de Emisi&oacute;n:</strong>
-											<span th:text="${#dates.format(new java.util.Date(), 'dd-MMM-yyyy')}">2012-07-15</span>
+											<span th:text="${#dates.format(new java.util.Date(), 'dd-MM-yyyy')}">2012-07-15</span>
 										</span>
 										<input type="hidden" th:field="*{issueDate}" th:value="${new java.util.Date()}"/>
 										<span>

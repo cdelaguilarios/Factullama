@@ -37,7 +37,7 @@
 								<tr th:each="bill : ${bills}">
 									<td th:text="${bill.number}" class="text-center"></td>
 									<td th:text="${bill.issueDate}"></td>
-									<td th:text="${bill.referralGuide}"></td>
+									<td th:text="${bill.customer.name}"></td>
 									<td th:text="${bill.total}" class="text-right" ></td>
 									<td>
 										<a href="#" class="btn btn-primary btn-small" th:href="@{|/admin/viewBill/${bill.id}|}" target="_blank"><i class="glyphicon glyphicon-print"></i>     Imprimir</a>

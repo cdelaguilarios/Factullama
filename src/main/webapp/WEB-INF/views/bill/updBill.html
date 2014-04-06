@@ -21,9 +21,9 @@
 						</span>
 						<h5>Factura</h5>
 						<input type="hidden" th:field="*{idCurrency}" />
-						<div class="buttons">
+						<!-- <div class="buttons">
 							<a title="Atras" class="btn" href="javascript:history.go(-1)"><i class="glyphicon glyphicon-arrow-left"></i> <span class="text">Atrás</span></a>
-						</div>
+						</div>  -->
 					</div>
 					<div class="widget-content nopadding">
 						<div class="invoice-content">
@@ -136,7 +136,7 @@
 									<td>
 										<input type="text" th:field="*{details[__${detailStat.index}__].unitPrice}" th:errorclass="fieldError"  style="width: 100%;" class="text-right unitPrice"/>
 									</td>
-									<td style="width: 10%;" th:text="${detail.amount}">
+									<td class="text-right" style="width: 10%;" th:text="${detail.amount}">
 										$ 0.00
 									</td>
 									<td>
