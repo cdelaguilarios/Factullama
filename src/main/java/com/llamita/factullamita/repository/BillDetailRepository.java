@@ -15,17 +15,6 @@ public class BillDetailRepository extends HibernateRepository{
 	}		
 	
 	public void deleteBillDetail(BillDetail detail){
-		Transaction tx = null;
-		try{
-			tx = (Transaction) getSession().beginTransaction();
-			getSession().delete(detail);
-			tx.commit();
-		}catch(Exception e){
-			try{
-    			tx.rollback();
-    		}catch(RuntimeException rbe){
-    			System.out.println("Couldn’t roll back transaction "+ rbe);
-    		}
-		}
+		getSession().delete(detail);
 	}
 }

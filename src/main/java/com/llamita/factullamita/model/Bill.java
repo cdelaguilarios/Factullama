@@ -1,8 +1,13 @@
 package com.llamita.factullamita.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -63,9 +68,9 @@ public class Bill implements Serializable{
 	@Column(name = "IN_IDCLIENTE")
 	private Integer idCustomer;
 	
-	@OneToMany(fetch=FetchType.EAGER)
-	@JoinColumn(name="IN_IDFACTURA", referencedColumnName = "IN_IDFACTURA", insertable = false, updatable = false)
-	private List<BillDetail> details;
+	@OneToMany(targetEntity = BillDetail.class, mappedBy = "bill")
+    @Fetch(FetchMode.SUBSELECT)
+	private Set<BillDetail> details = new HashSet<BillDetail>(0);
 
     public Bill() {}
 
@@ -181,11 +186,11 @@ public class Bill implements Serializable{
 		this.idCustomer = idCustomer;
 	}
 
-	public List<BillDetail> getDetails() {
+	public Set<BillDetail> getDetails() {
 		return details;
 	}
 
-	public void setDetails(List<BillDetail> details) {
+	public void setDetails(Set<BillDetail> details) {
 		this.details = details;
 	}
 

@@ -73,7 +73,6 @@ public class Caster {
 		model.setUnitPrice(bean.getUnitPrice());
 		model.setAmount(bean.getAmount());
 		model.setDescription(bean.getDescription());
-		model.setIdBill(bean.getIdBill());
 		log.info("* Convertir BillDetail Bean -> Modelo [Fin] *");
 		return model;
 	}
@@ -86,7 +85,7 @@ public class Caster {
 		bean.setId(model.getId());
 		bean.setAmount(model.getAmount());
 		bean.setDescription(model.getDescription());
-		bean.setIdBill(model.getIdBill());
+		bean.setIdBill(model.getBill().getId());
 		bean.setNumber(model.getNumber());
 		bean.setQuantity(model.getQuantity());
 		bean.setUnitPrice(model.getUnitPrice());

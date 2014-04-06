@@ -59,10 +59,12 @@ public class BillController {
 	public String listBills(ModelMap modelMap){
 		log.info("* Controlador: Customer - Listar facturas [Inicio] *");
 		List<Bill> bills = manageBillLogic.listBill();
-//		List<BillBean> billsBeans = new ArrayList<BillBean>();
-//		for(Bill bill : bills) 
-//			billsBeans.add(Caster.billModelToBean(bill));		
-        modelMap.addAttribute("bills", bills);
+		List<BillBean> billsBeans = new ArrayList<BillBean>();
+		for(Bill bill : bills) {
+            log.info("Una iteracion mas....");
+			billsBeans.add(Caster.billModelToBean(bill));
+        }
+        modelMap.addAttribute("bills", billsBeans);
         log.info("* Controlador: Customer - Listar facturas [Fin] *");
 		return "/bill/list";
 	}
@@ -102,7 +104,7 @@ public class BillController {
 			log.debug("* Guardar Detalle *");
 			for(BillDetailBean detail:bill.getDetails()){
 				detail.setIdBill(billModel.getId());
-				manageBillLogic.addBillDetail(Caster.billDetailBeanToModel(detail));
+				manageBillLogic.addBillDetail(Caster.billDetailBeanToModel(detail), billModel);
 			}
 			
 			modelMap.clear();
@@ -199,7 +201,7 @@ public class BillController {
 		manageBillLogic.updBill(Caster.billBeanToModel(bill));
 		for (BillDetailBean detail : bill.getDetails()) {
 			detail.setIdBill(bill.getId());
-			manageBillLogic.addBillDetail(Caster.billDetailBeanToModel(detail));
+			manageBillLogic.addBillDetail(Caster.billDetailBeanToModel(detail), null);
 		}	
 		modelMap.clear();
 		log.info("* Controlador: Bill - Actualizar factura [Fin] *");

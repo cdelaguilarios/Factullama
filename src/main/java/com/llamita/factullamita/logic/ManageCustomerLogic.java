@@ -36,7 +36,7 @@ public class ManageCustomerLogic {
 			Customer customer = getCustomer(idCustomer);
 			if(customer!=null){
 				customer.setState("0");
-				customerRepository.addOrUpdateCustomer(customer);
+				customerRepository.updateCustomer(customer);
 			}
 		}
 	}

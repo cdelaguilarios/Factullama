@@ -21,18 +21,11 @@ public class CustomerRepository extends HibernateRepository{
 	}
 	
 	public void addOrUpdateCustomer(Customer customer){
-		Transaction tx = null;
-		try{
-			tx = (Transaction) getSession().beginTransaction();
-			getSession().saveOrUpdate(customer);
-			tx.commit();
-		}catch(Exception e){
-			try{
-    			tx.rollback();
-    		}catch(RuntimeException rbe){
-    			System.out.println("Couldn’t roll back transaction "+ rbe);
-    		}
-		}
+		getSession().saveOrUpdate(customer);
+	}
+	
+	public void updateCustomer(Customer customer){
+		getSession().update(customer);
 	}
 	
 	public Customer getCustomer(Integer idCustomer){

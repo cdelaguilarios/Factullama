@@ -14,7 +14,8 @@
                 login-processing-url="/login/authenticate"
                 username-parameter="username" password-parameter="password"
                 authentication-failure-url="/login?error=true"
-                default-target-url="/admin/index" />
+                default-target-url="/admin/index" always-use-default-target="true"/>
+
         <security:logout logout-url="/logout" logout-success-url="/login" />
     </security:http>
 

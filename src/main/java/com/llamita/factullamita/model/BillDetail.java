@@ -14,9 +14,6 @@ import javax.persistence.Table;
 @Table(name="DETALLE_FACTURA")
 public class BillDetail implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6998318888890422765L;
 
 	@Id
@@ -38,9 +35,10 @@ public class BillDetail implements Serializable{
 	
 	@Column(name = "VC_IMPORTE")
 	private String amount;
-	
-	@Column(name = "IN_IDFACTURA")
-	private int idBill;
+
+    @ManyToOne
+    @JoinColumn(name="IN_IDFACTURA", referencedColumnName = "IN_IDFACTURA",updatable=false)
+    private Bill bill;
 
     public BillDetail() {}
 
@@ -92,11 +90,11 @@ public class BillDetail implements Serializable{
 		this.amount = amount;
 	}
 
-	public int getIdBill() {
-		return idBill;
-	}
+    public Bill getBill() {
+        return bill;
+    }
 
-	public void setIdBill(int idBill) {
-		this.idBill = idBill;
-	}
+    public void setBill(Bill bill) {
+        this.bill = bill;
+    }
 }
