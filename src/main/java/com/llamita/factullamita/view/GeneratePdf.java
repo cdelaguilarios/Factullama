@@ -102,11 +102,12 @@ public class GeneratePdf extends AbstractPdfView{
 		float[] columnWidths4 = {6.80f, 67.01f, 10.99f, 15.20f};
 		t4.setWidths(columnWidths4);
 		
-		t4.addCell(" ");t4.addCell(" ");t4.addCell(" ");t4.addCell(" ");		
-		for (int i = 0; i < 30; i++) {		
-			if(i<bill.getDetails().size()){
+		t4.addCell(" ");t4.addCell(" ");t4.addCell(" ");t4.addCell(" ");
+		int f = 0;
+		for (int i = 0; i < 30; i++) {
+			if(f<bill.getDetails().size()){
 
-				BillDetailBean billDetail = bill.getDetails().get(i);
+				BillDetailBean billDetail = bill.getDetails().get(f);
 				String decription = billDetail.getDescription();
 				int count = decription.length();
 				int auxMaxCar = 77;
@@ -142,6 +143,7 @@ public class GeneratePdf extends AbstractPdfView{
 			}else{
 				t4.addCell(" ");t4.addCell(" ");t4.addCell(" ");t4.addCell(" ");	
 			}
+			f++;
 		}
 		
 		

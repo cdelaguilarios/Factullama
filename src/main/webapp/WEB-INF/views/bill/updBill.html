@@ -101,7 +101,7 @@
 										<th class="total-label" colspan="4">
 											 Subtotal <span th:text="${' (' + currency.symbol + ') '}">(S/.)</span> :
 										</th>
-										<th class="total-amount" th:text="${bill.subtotal}">
+										<th id="subtotal" class="total-amount" th:text="${bill.subtotal}">
 											 920.00
 										</th>
 									</tr>
@@ -109,7 +109,7 @@
 										<th class="total-label" colspan="4">
 											 IGV <span th:text="${' (' + currency.symbol + ') '}">(S/.)</span> :
 										</th>
-										<th class="total-amount" th:text="${bill.igv}">
+										<th id="igv" class="total-amount" th:text="${bill.igv}">
 											 920.00
 										</th>
 									</tr>
@@ -117,12 +117,12 @@
 										<th class="total-label" colspan="4">
 											 Total <span th:text="${' (' + currency.symbol + ') '}">(S/.)</span> :
 										</th>
-										<th class="total-amount" th:text="${bill.total}">
+										<th id="total" class="total-amount" th:text="${bill.total}">
 											 920.00
 										</th>
 									</tr>
 								</tfoot>
-								<tbody>
+								<tbody id="tbody-content">
 								<tr th:each="detail,detailStat : *{details}">			
 									<input type="hidden" th:field="*{details[__${detailStat.index}__].id}" />	
 									<td th:text="${detailStat.count}">1</td>
