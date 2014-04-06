@@ -1,7 +1,6 @@
 package com.llamita.factullamita.controller;
 
 import com.llamita.factullamita.logic.AdminLogic;
-import com.llamita.factullamita.security.AdminDetailsService;
 import com.llamita.factullamita.view.AdminPwdBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

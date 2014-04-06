@@ -20,7 +20,7 @@ public class Caster {
 
 	public static CustomerBean customerModelToBean(Customer model,CustomerBean bean){
 		log.info("* Convertir Customer Modelo -> Bean [Inicio] *");
-		if(bean!=null){
+		if(bean!=null){   
 			bean.setId(model.getId());
 			bean.setName(model.getName());
 			bean.setRuc(model.getName());

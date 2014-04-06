@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -35,11 +36,11 @@ public class BillDetail implements Serializable{
 	
 	@Column(name = "VC_IMPORTE")
 	private String amount;
-
-    @ManyToOne
-    @JoinColumn(name="IN_IDFACTURA", referencedColumnName = "IN_IDFACTURA",updatable=false)
-    private Bill bill;
-
+	
+	@ManyToOne
+	@JoinColumn(name="IN_IDFACTURA")
+	private Bill bill;
+	
     public BillDetail() {}
 
 	public int getId() {
@@ -90,11 +91,14 @@ public class BillDetail implements Serializable{
 		this.amount = amount;
 	}
 
-    public Bill getBill() {
-        return bill;
-    }
+	public Bill getBill() {
+		return bill;
+	}
 
-    public void setBill(Bill bill) {
-        this.bill = bill;
-    }
+	public void setBill(Bill bill) {
+		this.bill = bill;
+	}
+	
+	
+	
 }

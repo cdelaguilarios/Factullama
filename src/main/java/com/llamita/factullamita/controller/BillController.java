@@ -201,7 +201,7 @@ public class BillController {
 		manageBillLogic.updBill(Caster.billBeanToModel(bill));
 		for (BillDetailBean detail : bill.getDetails()) {
 			detail.setIdBill(bill.getId());
-			manageBillLogic.addBillDetail(Caster.billDetailBeanToModel(detail), null);
+			manageBillLogic.addBillDetail(Caster.billDetailBeanToModel(detail),Caster.billBeanToModel(bill));
 		}	
 		modelMap.clear();
 		log.info("* Controlador: Bill - Actualizar factura [Fin] *");
