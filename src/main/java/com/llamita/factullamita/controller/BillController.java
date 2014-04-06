@@ -61,8 +61,11 @@ public class BillController {
 		List<Bill> bills = manageBillLogic.listBill();
 		List<BillBean> billsBeans = new ArrayList<BillBean>();
 		for(Bill bill : bills) {
-            log.info("Una iteracion mas....");
-			billsBeans.add(Caster.billModelToBean(bill));
+            if(bill!=null){
+            	bill = manageBillLogic.getBill(bill.getId());
+            	log.debug("Factura: "+bill.getId()+" "+bill.getNumber()+" "+bill.getTotal());
+    			billsBeans.add(Caster.billModelToBean(bill));
+            }
         }
         modelMap.addAttribute("bills", billsBeans);
         log.info("* Controlador: Customer - Listar facturas [Fin] *");
@@ -110,7 +113,8 @@ public class BillController {
 			modelMap.clear();
 		}
 		log.info("* Controlador: Customer - Guardar factura [Inicio] *");
-        return listBills(modelMap);
+//        return listBills(modelMap);
+        return "redirect:/admin/bill/";	  
     }
 	
 	@RequestMapping(value="/billProcess", params={"print"})

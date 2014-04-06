@@ -20,7 +20,6 @@ public class ManageBillLogic {
     @Autowired
     private BillRepository billRepository;
 
-    @Transactional
     public List<Bill> listBill() {
 //        List<Bill> listBillDecoded = new ArrayList<Bill>();
         List<Bill> listBill = billRepository.listBill();
@@ -42,7 +41,6 @@ public class ManageBillLogic {
         return listBill;
     }
 
-    @Transactional
     public void addBill(Bill bill){
 
 //        byte[] encodeSubTotal = Base64.encodeBase64(bill.getSubtotal().getBytes());
@@ -55,7 +53,7 @@ public class ManageBillLogic {
         billRepository.addOrUpdateBill(bill);
     }
 
-    @Transactional
+    
     public void addBillDetail(BillDetail detail, Bill bill) {
 //        byte[] encodeUnitPrice    = Base64.encodeBase64(detail.getUnitPrice().getBytes());
 //        byte[] encodeAmount = Base64.encodeBase64(detail.getAmount().getBytes());
@@ -70,7 +68,6 @@ public class ManageBillLogic {
         billRepository.addOrUpdateBillDetail(detail, bill);
     }
 
-    @Transactional
     public void updBill(Bill bill) {
 
 //        byte[] encodeSubTotal = Base64.encodeBase64(bill.getSubtotal().getBytes());
@@ -83,20 +80,18 @@ public class ManageBillLogic {
         billRepository.addOrUpdateBill(bill);
     }
 
-    @Transactional
-    public Bill getBillByNumber(String number) {
-        Bill bill = billRepository.getBillByField("number", number);
-
-//        byte[] decodeSubTotal = Base64.decodeBase64(bill.getSubtotal().getBytes());
-//        byte[] decodeTotal    = Base64.decodeBase64(bill.getTotal().getBytes());
+//    public Bill getBillByNumber(String number) {
+//        Bill bill = billRepository.getBillByField("number", number);
 //
-//        bill.setSubtotal(new String(decodeSubTotal));
-//        bill.setTotal(new String(decodeTotal));
+////        byte[] decodeSubTotal = Base64.decodeBase64(bill.getSubtotal().getBytes());
+////        byte[] decodeTotal    = Base64.decodeBase64(bill.getTotal().getBytes());
+////
+////        bill.setSubtotal(new String(decodeSubTotal));
+////        bill.setTotal(new String(decodeTotal));
+//
+//        return bill;
+//    }
 
-        return bill;
-    }
-
-    @Transactional
     public Bill getBill(Integer id){
         Bill bill = billRepository.getBill(id);
 
@@ -121,7 +116,6 @@ public class ManageBillLogic {
         return bill;
     }
 
-    @Transactional
     public void delBill(Integer idBill){
         if(idBill !=null){
             Bill bill = getBill(idBill);

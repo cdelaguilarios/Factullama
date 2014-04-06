@@ -9,6 +9,7 @@ import com.llamita.factullamita.model.Bill;
 import com.llamita.factullamita.model.BillDetail;
 import com.llamita.factullamita.model.Currency;
 import com.llamita.factullamita.model.Customer;
+import com.llamita.factullamita.repository.BillRepository;
 import com.llamita.factullamita.view.BillBean;
 import com.llamita.factullamita.view.BillDetailBean;
 import com.llamita.factullamita.view.CurrencyBean;
@@ -142,7 +143,7 @@ public class Caster {
 		List<BillDetailBean> list = new ArrayList<BillDetailBean>();
 		
 		for(BillDetail detail: model.getDetails()){
-			log.debug("* Detalle : "+detail);
+			log.debug("* Detalle : "+detail.getNumber()+" "+detail.getDescription()+" "+detail.getAmount());
 			list.add(Caster.billDetailModelToBean(detail));
 		}
 		
